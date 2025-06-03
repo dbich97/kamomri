@@ -143,8 +143,10 @@ export default function AgeCalculator() {
     }
     
     setShowGregorianResults(false);
+    setHijriResult(null); // Clear Hijri results when calculating Gregorian
+    setShowHijriResults(false);
     setGregorianBirthDateForCalculations(constructedBirthDate);
-    setHijriBirthDayForCountdown(undefined); // Clear Hijri countdown triggers
+    setHijriBirthDayForCountdown(undefined); 
     setHijriBirthMonthForCountdown(undefined);
 
 
@@ -176,17 +178,15 @@ export default function AgeCalculator() {
     }
 
     setShowHijriResults(false);
+    setGregorianResult(null); // Clear Gregorian results when calculating Hijri
+    setShowGregorianResults(false);
     setGregorianBirthDateForCalculations(convertedGregorianBirthDate);
     setHijriBirthDayForCountdown(selectedDayH);
     setHijriBirthMonthForCountdown(selectedMonthH);
 
     const gregorianAge = calculateGregorianAge(convertedGregorianBirthDate, currentDate);
     const currentHijriDetails = getHijriDateDetails(currentDate);
-    // For hijriInputDateDetails, we use the user's direct input.
-    // We need to format it nicely. We can create a temporary Gregorian date that we know matches this Hijri date
-    // (like the converted one) and use getHijriDateDetails on it to get monthName, weekdayName.
-    // Or, more simply, construct it directly if convertHijriToGregorian implies validity
-    const inputHijriDetailsDirect = getHijriDateDetails(convertedGregorianBirthDate); // This will give us the names
+    const inputHijriDetailsDirect = getHijriDateDetails(convertedGregorianBirthDate); 
 
     const hijriAge = calculateHijriAge(inputHijriDetailsDirect, currentHijriDetails);
     const gregorianBirthDateFormatted = formatGregorianDate(convertedGregorianBirthDate);
@@ -200,7 +200,7 @@ export default function AgeCalculator() {
             month: selectedMonthH,
             day: selectedDayH,
             monthName: arabicHijriMonthNames[selectedMonthH -1],
-            weekdayName: inputHijriDetailsDirect.weekdayName, // from converted date
+            weekdayName: inputHijriDetailsDirect.weekdayName, 
             formattedDate: `${selectedDayH} ${arabicHijriMonthNames[selectedMonthH-1]} ${selectedYearH}هـ`
         }
     });
@@ -213,7 +213,7 @@ export default function AgeCalculator() {
       return;
     }
     const update = () => setLiveAge(calculateLiveAgeDetails(gregorianBirthDateForCalculations));
-    update(); // Initial call
+    update(); 
     const intervalId = setInterval(update, 1000);
     return () => clearInterval(intervalId);
   }, [gregorianBirthDateForCalculations]);
@@ -223,19 +223,18 @@ export default function AgeCalculator() {
       setNextGregorianBirthdayCountdown(null);
       return;
     }
-    // Only run if Hijri countdown is not active
     if (hijriBirthDayForCountdown === undefined && hijriBirthMonthForCountdown === undefined) {
         const update = () => setNextGregorianBirthdayCountdown(calculateNextBirthdayDetails(gregorianBirthDateForCalculations));
         update();
         const intervalId = setInterval(update, 1000);
         return () => clearInterval(intervalId);
     } else {
-        setNextGregorianBirthdayCountdown(null); // Clear if Hijri countdown is active
+        setNextGregorianBirthdayCountdown(null); 
     }
   }, [gregorianBirthDateForCalculations, hijriBirthDayForCountdown, hijriBirthMonthForCountdown]);
   
   useEffect(() => {
-    if (hijriBirthDayForCountdown && hijriBirthMonthForCountdown) {
+    if (hijriBirthDayForCountdown && hijriBirthMonthForCountdown && gregorianBirthDateForCalculations) {
         const update = () => {
             const countdown = calculateNextHijriBirthdayDetails(hijriBirthDayForCountdown, hijriBirthMonthForCountdown, new Date());
             setNextHijriBirthdayCountdown(countdown);
@@ -244,7 +243,7 @@ export default function AgeCalculator() {
         const intervalId = setInterval(update, 1000);
         return () => clearInterval(intervalId);
     } else {
-        setNextHijriBirthdayCountdown(null); // Clear if Gregorian countdown is active or no BD set
+        setNextHijriBirthdayCountdown(null); 
     }
   }, [hijriBirthDayForCountdown, hijriBirthMonthForCountdown, gregorianBirthDateForCalculations]);
 
@@ -259,7 +258,6 @@ export default function AgeCalculator() {
     return false;
   }
   
-  // Helper for Hijri birthday message (day-based)
   function isTodayHijriBirthday(birthDay: number | undefined, birthMonth: number | undefined): boolean {
     if (!birthDay || !birthMonth) return false;
     const currentHijri = getHijriDateDetails(new Date());
@@ -274,13 +272,18 @@ export default function AgeCalculator() {
     if (isHijri) {
         isTodayActualBirthday = isTodayHijriBirthday(hijriBirthDayForCountdown, hijriBirthMonthForCountdown);
     } else if (birthDateObj) {
+        // For Gregorian, countdown.isBirthdayToday is already considering date part.
+        // We also need to check if the time has passed if it's today.
         isTodayActualBirthday = countdown.isBirthdayToday || false;
     }
     
     const messageType = isHijri ? "الهجري" : "الميلادي";
 
     if (isTodayActualBirthday) {
-        if (isHijri || (birthDateObj && nowIsPastBirthTime(birthDateObj)) || (countdown.days === 0 && countdown.hours === 0 && countdown.minutes === 0 && countdown.seconds === 0 && birthDateObj && birthDateObj.getFullYear() === new Date().getFullYear())) {
+        // For Hijri, if it's today, it's a full day celebration.
+        // For Gregorian, if it's today, we check if the birth time has passed.
+        // Or if it's exactly 00:00:00 and the years match.
+        if (isHijri || (birthDateObj && nowIsPastBirthTime(birthDateObj)) || (countdown.days === 0 && countdown.hours === 0 && countdown.minutes === 0 && countdown.seconds === 0 && birthDateObj && birthDateObj.getFullYear() !== new Date().getFullYear() /* ensure it's not just a fresh turn of day for a future birthday */) ) {
             return <p className="text-lg text-center font-semibold text-green-600">🎉 عيد ميلاد سعيد ({messageType})! لقد أتممت عاماً جديداً اليوم! 🎉</p>;
         } else {
             return <p className="text-lg text-center font-semibold text-green-600">🎉 عيد ميلادك {messageType} هو اليوم! 🎉</p>;
@@ -306,8 +309,8 @@ export default function AgeCalculator() {
         <CardContent className="space-y-6">
           <Tabs defaultValue="gregorian" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="gregorian">حساب بالميلادي</TabsTrigger>
-              <TabsTrigger value="hijri">حساب بالهجري</TabsTrigger>
+              <TabsTrigger value="gregorian" onClick={() => { setShowHijriResults(false); setHijriResult(null); }}>حساب بالميلادي</TabsTrigger>
+              <TabsTrigger value="hijri" onClick={() => { setShowGregorianResults(false); setGregorianResult(null);}}>حساب بالهجري</TabsTrigger>
             </TabsList>
             
             {/* Gregorian Input Tab */}
@@ -315,7 +318,6 @@ export default function AgeCalculator() {
               <div className="space-y-3 mb-6">
                 <Label className="block text-sm font-medium text-foreground mb-1">تاريخ الميلاد (ميلادي):</Label>
                 <div className="grid grid-cols-3 gap-3">
-                  {/* Year Select G */}
                   <div className="space-y-1">
                     <Label htmlFor="year-select-g" className="text-xs">السنة</Label>
                     <Select onValueChange={handleYearChangeG} value={selectedYearG?.toString()}>
@@ -323,18 +325,16 @@ export default function AgeCalculator() {
                       <SelectContent>{gregorianYears.map(year => <SelectItem key={year} value={year.toString()}>{year}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
-                  {/* Month Select G */}
                   <div className="space-y-1">
                     <Label htmlFor="month-select-g" className="text-xs">الشهر</Label>
-                    <Select onValueChange={handleMonthChangeG} value={selectedMonthG?.toString()} disabled={!selectedYearG}>
+                    <Select onValueChange={handleMonthChangeG} value={selectedMonthG?.toString()}>
                       <SelectTrigger id="month-select-g"><SelectValue placeholder="الشهر" /></SelectTrigger>
                       <SelectContent>{months.map(month => <SelectItem key={month} value={month.toString()}>{month}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
-                  {/* Day Select G */}
                   <div className="space-y-1">
                     <Label htmlFor="day-select-g" className="text-xs">اليوم</Label>
-                    <Select onValueChange={(v) => setSelectedDayG(parseInt(v))} value={selectedDayG?.toString()} disabled={!selectedYearG || !selectedMonthG}>
+                    <Select onValueChange={(v) => setSelectedDayG(parseInt(v))} value={selectedDayG?.toString()}>
                       <SelectTrigger id="day-select-g"><SelectValue placeholder="اليوم" /></SelectTrigger>
                       <SelectContent>{daysInSelectedGregorianMonth.map(day => <SelectItem key={day} value={day.toString()}>{day}</SelectItem>)}</SelectContent>
                     </Select>
@@ -351,7 +351,6 @@ export default function AgeCalculator() {
               <div className="space-y-3 mb-6">
                 <Label className="block text-sm font-medium text-foreground mb-1">تاريخ الميلاد (هجري):</Label>
                 <div className="grid grid-cols-3 gap-3">
-                  {/* Year Select H */}
                   <div className="space-y-1">
                     <Label htmlFor="year-select-h" className="text-xs">السنة</Label>
                     <Select onValueChange={handleYearChangeH} value={selectedYearH?.toString()}>
@@ -359,18 +358,16 @@ export default function AgeCalculator() {
                       <SelectContent>{hijriYears.map(year => <SelectItem key={year} value={year.toString()}>{year}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
-                  {/* Month Select H */}
                   <div className="space-y-1">
                     <Label htmlFor="month-select-h" className="text-xs">الشهر</Label>
-                    <Select onValueChange={handleMonthChangeH} value={selectedMonthH?.toString()} disabled={!selectedYearH}>
+                    <Select onValueChange={handleMonthChangeH} value={selectedMonthH?.toString()}>
                       <SelectTrigger id="month-select-h"><SelectValue placeholder="الشهر" /></SelectTrigger>
                       <SelectContent>{months.map(monthNum => <SelectItem key={monthNum} value={monthNum.toString()}>{arabicHijriMonthNames[monthNum - 1]}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
-                  {/* Day Select H */}
                   <div className="space-y-1">
                     <Label htmlFor="day-select-h" className="text-xs">اليوم</Label>
-                    <Select onValueChange={(v) => setSelectedDayH(parseInt(v))} value={selectedDayH?.toString()} disabled={!selectedYearH || !selectedMonthH}>
+                    <Select onValueChange={(v) => setSelectedDayH(parseInt(v))} value={selectedDayH?.toString()}>
                       <SelectTrigger id="day-select-h"><SelectValue placeholder="اليوم" /></SelectTrigger>
                       <SelectContent>{daysInSelectedHijriMonth.map(day => <SelectItem key={day} value={day.toString()}>{day}</SelectItem>)}</SelectContent>
                     </Select>
@@ -384,11 +381,9 @@ export default function AgeCalculator() {
           </Tabs>
         </CardContent>
 
-        {/* Results Area - Common for both or shown based on active tab logic */}
         {((gregorianResult && showGregorianResults) || (hijriResult && showHijriResults)) && (
           <CardFooter className={cn("flex flex-col space-y-4 pt-6 border-t", (showGregorianResults || showHijriResults) ? 'animate-fade-in' : 'opacity-0')}>
-            {/* Gregorian Tab Results */}
-            {gregorianResult && showGregorianResults && !hijriResult && (
+            {gregorianResult && showGregorianResults && (
               <>
                 <div className="w-full p-4 bg-secondary/50 rounded-lg shadow">
                   <h3 className="text-xl font-semibold text-primary mb-2 flex items-center"><GiftIcon className="ml-2 h-6 w-6 text-primary" />عمرك حسب التقويم الميلادي:</h3>
@@ -409,7 +404,6 @@ export default function AgeCalculator() {
               </>
             )}
 
-            {/* Hijri Tab Results */}
             {hijriResult && showHijriResults && (
               <>
                 <div className="w-full p-4 bg-secondary/50 rounded-lg shadow">
@@ -431,8 +425,7 @@ export default function AgeCalculator() {
               </>
             )}
             
-            {/* Common Live Age Counter - always based on gregorianBirthDateForCalculations */}
-            {liveAge && (gregorianBirthDateForCalculations) && (
+            {liveAge && (gregorianBirthDateForCalculations) && (showGregorianResults || showHijriResults) && (
                  <div className="w-full p-4 bg-secondary/50 rounded-lg shadow">
                     <h3 className="text-xl font-semibold text-primary mb-2 flex items-center"><TimerIcon className="ml-2 h-6 w-6 text-primary" />عمرك الحالي بدقة:</h3>
                     <p className="text-lg text-foreground tabular-nums">
@@ -452,4 +445,3 @@ export default function AgeCalculator() {
     </div>
   );
 }
-
