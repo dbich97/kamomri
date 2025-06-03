@@ -419,7 +419,7 @@ export default function AgeCalculator() {
               <Button variant="ghost" size="icon" onClick={handleShareTwitter} aria-label="شارك على تويتر" className="rounded-full p-3 text-primary hover:bg-primary/10">
                 <Twitter className="h-6 w-6" />
               </Button>
-              <Button variant="ghost" size="icon" onClick={handleShareWhatsApp} aria-label="شارك على واتساب" className="rounded-full p-3 text-primary hover:bg-primary/10">
+              <Button variant="ghost" size="icon" onClick={handleShareWhatsApp} aria-label="شارك على واتساب" className="rounded-full p-3 text-green-600 hover:bg-green-600/10">
                 <MessageSquare className="h-6 w-6" />
               </Button>
               <Button variant="ghost" size="icon" onClick={handleCopyLink} aria-label="انسخ الرابط" className="rounded-full p-3 text-primary hover:bg-primary/10">
