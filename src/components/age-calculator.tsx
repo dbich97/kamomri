@@ -330,7 +330,7 @@ export default function AgeCalculator() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-background">
-      <Card className="w-full max-w-lg shadow-xl">
+      <Card className="w-full max-w-xl shadow-xl"> {/* Changed max-w-lg to max-w-xl */}
         <CardHeader className="text-center">
           <CardTitle className="text-3xl font-headline text-primary">حاسبة العمر الدقيقة</CardTitle>
           <CardDescription className="text-muted-foreground">اختر طريقة الإدخال وأدخل تاريخ ميلادك</CardDescription>
