@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'حساب العمر بالهجري والميلادي - احسب عمرك',
-  description: 'تطبيق لحساب العمر بالتقويمين الهجري والميلادي بدقة وسهولة، مع عدادات حية.',
+  title: 'كم عمري - حاسبة دقيقة للعمر بالهجري والميلادي',
+  description: 'موقع كم عمري يساعدك على حساب عمرك بدقة بالتقويم الميلادي والهجري. أدخل تاريخ ميلادك واكتشف عمرك بالسنوات والأشهر والأيام، مع عداد حي وعيد ميلادك القادم.',
 };
 
 export default function RootLayout({
