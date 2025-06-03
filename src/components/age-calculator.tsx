@@ -13,7 +13,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ClockIcon, GiftIcon, CalendarIcon, TimerIcon, PartyPopperIcon, AlertTriangleIcon } from "lucide-react";
+import { ClockIcon, GiftIcon, CalendarIcon, TimerIcon, PartyPopperIcon, AlertTriangleIcon, Facebook, Twitter, MessageSquare, Link as LinkIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   type Age,
@@ -293,6 +293,40 @@ export default function AgeCalculator() {
     );
   };
 
+  const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const shareTitle = "اكتشف عمرك بدقة مع حاسبة العمر هذه!";
+
+  const handleShareFacebook = () => {
+    if (typeof window !== 'undefined') {
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const handleShareTwitter = () => {
+    if (typeof window !== 'undefined') {
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const handleShareWhatsApp = () => {
+    if (typeof window !== 'undefined') {
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareTitle + " " + shareUrl)}`, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const handleCopyLink = () => {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(shareUrl)
+        .then(() => {
+          toast({ title: "تم النسخ!", description: "تم نسخ رابط الموقع إلى الحافظة.", icon: <LinkIcon className="h-5 w-5" /> });
+        })
+        .catch(err => {
+          toast({ title: "خطأ", description: "لم نتمكن من نسخ الرابط. الرجاء المحاولة يدويًا.", variant: "destructive" });
+          console.error('Failed to copy: ', err);
+        });
+    }
+  };
+
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-background">
@@ -374,6 +408,26 @@ export default function AgeCalculator() {
               </Button>
             </TabsContent>
           </Tabs>
+
+          {/* Social Share Section */}
+          <div className="mt-8 pt-6 border-t border-border/50">
+            <h3 className="text-lg font-medium text-center mb-4 text-foreground">شارك الموقع مع أصدقائك:</h3>
+            <div className="flex justify-center items-center space-x-3 space-x-reverse rtl:space-x-reverse">
+              <Button variant="outline" size="icon" onClick={handleShareFacebook} aria-label="شارك على فيسبوك" className="rounded-full p-3 hover:bg-accent/20">
+                <Facebook className="h-6 w-6 text-primary" />
+              </Button>
+              <Button variant="outline" size="icon" onClick={handleShareTwitter} aria-label="شارك على تويتر" className="rounded-full p-3 hover:bg-accent/20">
+                <Twitter className="h-6 w-6 text-primary" />
+              </Button>
+              <Button variant="outline" size="icon" onClick={handleShareWhatsApp} aria-label="شارك على واتساب" className="rounded-full p-3 hover:bg-accent/20">
+                <MessageSquare className="h-6 w-6 text-primary" />
+              </Button>
+              <Button variant="outline" size="icon" onClick={handleCopyLink} aria-label="انسخ الرابط" className="rounded-full p-3 hover:bg-accent/20">
+                <LinkIcon className="h-6 w-6 text-primary" />
+              </Button>
+            </div>
+          </div>
+
         </CardContent>
 
         {((gregorianResult && showGregorianResults) || (hijriResult && showHijriResults)) && (
@@ -441,3 +495,4 @@ export default function AgeCalculator() {
   );
 }
 
+    
