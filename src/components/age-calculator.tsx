@@ -413,17 +413,17 @@ export default function AgeCalculator() {
           <div className="mt-8 pt-6 border-t border-border/50">
             <h3 className="text-lg font-medium text-center mb-4 text-foreground">شارك الموقع مع أصدقائك:</h3>
             <div className="flex justify-center items-center space-x-3 space-x-reverse rtl:space-x-reverse">
-              <Button variant="outline" size="icon" onClick={handleShareFacebook} aria-label="شارك على فيسبوك" className="rounded-full p-3 hover:bg-accent/20">
-                <Facebook className="h-6 w-6 text-primary" />
+              <Button variant="ghost" size="icon" onClick={handleShareFacebook} aria-label="شارك على فيسبوك" className="rounded-full p-3 text-primary hover:bg-primary/10">
+                <Facebook className="h-6 w-6" />
               </Button>
-              <Button variant="outline" size="icon" onClick={handleShareTwitter} aria-label="شارك على تويتر" className="rounded-full p-3 hover:bg-accent/20">
-                <Twitter className="h-6 w-6 text-primary" />
+              <Button variant="ghost" size="icon" onClick={handleShareTwitter} aria-label="شارك على تويتر" className="rounded-full p-3 text-primary hover:bg-primary/10">
+                <Twitter className="h-6 w-6" />
               </Button>
-              <Button variant="outline" size="icon" onClick={handleShareWhatsApp} aria-label="شارك على واتساب" className="rounded-full p-3 hover:bg-accent/20">
-                <MessageSquare className="h-6 w-6 text-primary" />
+              <Button variant="ghost" size="icon" onClick={handleShareWhatsApp} aria-label="شارك على واتساب" className="rounded-full p-3 text-primary hover:bg-primary/10">
+                <MessageSquare className="h-6 w-6" />
               </Button>
-              <Button variant="outline" size="icon" onClick={handleCopyLink} aria-label="انسخ الرابط" className="rounded-full p-3 hover:bg-accent/20">
-                <LinkIcon className="h-6 w-6 text-primary" />
+              <Button variant="ghost" size="icon" onClick={handleCopyLink} aria-label="انسخ الرابط" className="rounded-full p-3 text-primary hover:bg-primary/10">
+                <LinkIcon className="h-6 w-6" />
               </Button>
             </div>
           </div>
@@ -494,5 +494,3 @@ export default function AgeCalculator() {
     </div>
   );
 }
-
-    
