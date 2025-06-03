@@ -18,12 +18,11 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { href: "#", label: "من نحن" },
-  { href: "#", label: "سياسة الخصوصية" },
-  { href: "#", label: "تواصل معنا" },
+  { href: "/about", label: "من نحن" },
+  { href: "/privacy", label: "سياسة الخصوصية" },
+  { href: "/contact", label: "تواصل معنا" },
 ];
 
 export default function Header() {
@@ -64,8 +63,10 @@ export default function Header() {
         </div>
 
         {/* Center Text */}
-        <div className="text-center text-sm text-muted-foreground hidden md:block px-2">
-          حاسبة العمر بالتقويمين الهجري والميلادي
+        <div className="flex-1 text-center px-2 hidden md:block">
+          <p className="text-sm text-muted-foreground">
+            حاسبة العمر بالتقويمين الهجري والميلادي
+          </p>
         </div>
 
         {/* Left side for RTL (Menu icon) */}
