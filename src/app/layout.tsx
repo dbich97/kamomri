@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: 'حساب العمر بالهجري والميلادي - احسب عمرك',
-  description: 'تطبيق لحساب العمر بالتقويمين الهجري والميلادي بدقة وسهولة.',
+  description: 'تطبيق لحساب العمر بالتقويمين الهجري والميلادي بدقة وسهولة، مع عدادات حية.',
 };
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
         {children}
