@@ -1,14 +1,16 @@
 
 "use client";
 
+import React from 'react'; // Added this line
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
+import { Menu, Home as HomeIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import {
   Sheet,
@@ -16,10 +18,12 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  SheetClose,
 } from '@/components/ui/sheet';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const navLinks = [
+  { href: "/", label: "الرئيسية", icon: HomeIcon },
   { href: "/about", label: "من نحن" },
   { href: "/privacy", label: "سياسة الخصوصية" },
   { href: "/contact", label: "تواصل معنا" },
@@ -30,24 +34,29 @@ export default function Header() {
 
   const renderNavLinksForSheet = () => (
     navLinks.map((link) => (
-      <SheetTrigger key={link.label} asChild>
+      <SheetClose key={link.label} asChild>
         <Link
           href={link.href}
-          className="block px-4 py-3 text-base text-foreground hover:bg-accent hover:text-accent-foreground rounded-md text-right"
+          className="flex items-center justify-end px-4 py-3 text-base text-foreground hover:bg-accent hover:text-accent-foreground rounded-md text-right"
         >
           {link.label}
+          {link.icon && <link.icon className="mr-2 h-5 w-5" />}
         </Link>
-      </SheetTrigger>
+      </SheetClose>
     ))
   );
 
   const renderNavLinksForDropdown = () => (
-     navLinks.map((link) => (
-      <DropdownMenuItem key={link.label} asChild className="justify-end cursor-pointer">
-        <Link href={link.href} className="w-full text-right">
-          {link.label}
-        </Link>
-      </DropdownMenuItem>
+     navLinks.map((link, index) => (
+      <React.Fragment key={link.label}>
+        <DropdownMenuItem asChild className="justify-end cursor-pointer">
+          <Link href={link.href} className="w-full text-right flex items-center justify-end">
+            {link.label}
+            {link.icon && <link.icon className="mr-2 h-5 w-5" />}
+          </Link>
+        </DropdownMenuItem>
+        {index === 0 && navLinks.length > 1 && <DropdownMenuSeparator />}
+      </React.Fragment>
     ))
   );
 
@@ -94,7 +103,7 @@ export default function Header() {
                   <Menu className="h-6 w-6" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56 bg-background border-border shadow-lg"> {/* Changed align to "end" for RTL */}
+              <DropdownMenuContent align="end" className="w-56 bg-background border-border shadow-lg">
                 {renderNavLinksForDropdown()}
               </DropdownMenuContent>
             </DropdownMenu>
