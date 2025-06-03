@@ -272,18 +272,13 @@ export default function AgeCalculator() {
     if (isHijri) {
         isTodayActualBirthday = isTodayHijriBirthday(hijriBirthDayForCountdown, hijriBirthMonthForCountdown);
     } else if (birthDateObj) {
-        // For Gregorian, countdown.isBirthdayToday is already considering date part.
-        // We also need to check if the time has passed if it's today.
         isTodayActualBirthday = countdown.isBirthdayToday || false;
     }
     
     const messageType = isHijri ? "الهجري" : "الميلادي";
 
     if (isTodayActualBirthday) {
-        // For Hijri, if it's today, it's a full day celebration.
-        // For Gregorian, if it's today, we check if the birth time has passed.
-        // Or if it's exactly 00:00:00 and the years match.
-        if (isHijri || (birthDateObj && nowIsPastBirthTime(birthDateObj)) || (countdown.days === 0 && countdown.hours === 0 && countdown.minutes === 0 && countdown.seconds === 0 && birthDateObj && birthDateObj.getFullYear() !== new Date().getFullYear() /* ensure it's not just a fresh turn of day for a future birthday */) ) {
+        if (isHijri || (birthDateObj && nowIsPastBirthTime(birthDateObj)) || (countdown.days === 0 && countdown.hours === 0 && countdown.minutes === 0 && countdown.seconds === 0 && birthDateObj && birthDateObj.getFullYear() !== new Date().getFullYear()) ) {
             return <p className="text-lg text-center font-semibold text-green-600">🎉 عيد ميلاد سعيد ({messageType})! لقد أتممت عاماً جديداً اليوم! 🎉</p>;
         } else {
             return <p className="text-lg text-center font-semibold text-green-600">🎉 عيد ميلادك {messageType} هو اليوم! 🎉</p>;
@@ -316,66 +311,66 @@ export default function AgeCalculator() {
             {/* Gregorian Input Tab */}
             <TabsContent value="gregorian" className="mt-6">
               <div className="space-y-3 mb-6">
-                <Label className="block text-sm font-medium text-foreground mb-1">تاريخ الميلاد (ميلادي):</Label>
-                <div className="grid grid-cols-3 gap-3">
+                <Label className="block text-base font-medium text-foreground mb-2">تاريخ الميلاد (ميلادي):</Label>
+                <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
-                    <Label htmlFor="year-select-g" className="text-xs">السنة</Label>
+                    <Label htmlFor="year-select-g" className="text-sm">السنة</Label>
                     <Select onValueChange={handleYearChangeG} value={selectedYearG?.toString()}>
-                      <SelectTrigger id="year-select-g"><SelectValue placeholder="السنة" /></SelectTrigger>
-                      <SelectContent>{gregorianYears.map(year => <SelectItem key={year} value={year.toString()}>{year}</SelectItem>)}</SelectContent>
+                      <SelectTrigger id="year-select-g" className="h-12 text-base"><SelectValue placeholder="السنة" /></SelectTrigger>
+                      <SelectContent>{gregorianYears.map(year => <SelectItem key={year} value={year.toString()} className="text-base">{year}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-1">
-                    <Label htmlFor="month-select-g" className="text-xs">الشهر</Label>
+                    <Label htmlFor="month-select-g" className="text-sm">الشهر</Label>
                     <Select onValueChange={handleMonthChangeG} value={selectedMonthG?.toString()}>
-                      <SelectTrigger id="month-select-g"><SelectValue placeholder="الشهر" /></SelectTrigger>
-                      <SelectContent>{months.map(month => <SelectItem key={month} value={month.toString()}>{month}</SelectItem>)}</SelectContent>
+                      <SelectTrigger id="month-select-g" className="h-12 text-base"><SelectValue placeholder="الشهر" /></SelectTrigger>
+                      <SelectContent>{months.map(month => <SelectItem key={month} value={month.toString()} className="text-base">{month}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-1">
-                    <Label htmlFor="day-select-g" className="text-xs">اليوم</Label>
+                    <Label htmlFor="day-select-g" className="text-sm">اليوم</Label>
                     <Select onValueChange={(v) => setSelectedDayG(parseInt(v))} value={selectedDayG?.toString()}>
-                      <SelectTrigger id="day-select-g"><SelectValue placeholder="اليوم" /></SelectTrigger>
-                      <SelectContent>{daysInSelectedGregorianMonth.map(day => <SelectItem key={day} value={day.toString()}>{day}</SelectItem>)}</SelectContent>
+                      <SelectTrigger id="day-select-g" className="h-12 text-base"><SelectValue placeholder="اليوم" /></SelectTrigger>
+                      <SelectContent>{daysInSelectedGregorianMonth.map(day => <SelectItem key={day} value={day.toString()} className="text-base">{day}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
                 </div>
               </div>
-              <Button onClick={handleCalculateGregorian} className="w-full text-lg py-3 bg-primary hover:bg-accent text-primary-foreground transition-transform duration-150 ease-in-out active:scale-95">
-                <CalendarIcon className="ml-2 h-5 w-5" /> احسب عمرك (ميلادي)
+              <Button onClick={handleCalculateGregorian} className="w-full text-xl py-4 bg-primary hover:bg-accent text-primary-foreground transition-transform duration-150 ease-in-out active:scale-95">
+                <CalendarIcon className="ml-2 h-6 w-6" /> احسب عمرك (ميلادي)
               </Button>
             </TabsContent>
 
             {/* Hijri Input Tab */}
             <TabsContent value="hijri" className="mt-6">
               <div className="space-y-3 mb-6">
-                <Label className="block text-sm font-medium text-foreground mb-1">تاريخ الميلاد (هجري):</Label>
-                <div className="grid grid-cols-3 gap-3">
+                <Label className="block text-base font-medium text-foreground mb-2">تاريخ الميلاد (هجري):</Label>
+                <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
-                    <Label htmlFor="year-select-h" className="text-xs">السنة</Label>
+                    <Label htmlFor="year-select-h" className="text-sm">السنة</Label>
                     <Select onValueChange={handleYearChangeH} value={selectedYearH?.toString()}>
-                      <SelectTrigger id="year-select-h"><SelectValue placeholder="السنة" /></SelectTrigger>
-                      <SelectContent>{hijriYears.map(year => <SelectItem key={year} value={year.toString()}>{year}</SelectItem>)}</SelectContent>
+                      <SelectTrigger id="year-select-h" className="h-12 text-base"><SelectValue placeholder="السنة" /></SelectTrigger>
+                      <SelectContent>{hijriYears.map(year => <SelectItem key={year} value={year.toString()} className="text-base">{year}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-1">
-                    <Label htmlFor="month-select-h" className="text-xs">الشهر</Label>
+                    <Label htmlFor="month-select-h" className="text-sm">الشهر</Label>
                     <Select onValueChange={handleMonthChangeH} value={selectedMonthH?.toString()}>
-                      <SelectTrigger id="month-select-h"><SelectValue placeholder="الشهر" /></SelectTrigger>
-                      <SelectContent>{months.map(monthNum => <SelectItem key={monthNum} value={monthNum.toString()}>{arabicHijriMonthNames[monthNum - 1]}</SelectItem>)}</SelectContent>
+                      <SelectTrigger id="month-select-h" className="h-12 text-base"><SelectValue placeholder="الشهر" /></SelectTrigger>
+                      <SelectContent>{months.map(monthNum => <SelectItem key={monthNum} value={monthNum.toString()} className="text-base">{arabicHijriMonthNames[monthNum - 1]}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-1">
-                    <Label htmlFor="day-select-h" className="text-xs">اليوم</Label>
+                    <Label htmlFor="day-select-h" className="text-sm">اليوم</Label>
                     <Select onValueChange={(v) => setSelectedDayH(parseInt(v))} value={selectedDayH?.toString()}>
-                      <SelectTrigger id="day-select-h"><SelectValue placeholder="اليوم" /></SelectTrigger>
-                      <SelectContent>{daysInSelectedHijriMonth.map(day => <SelectItem key={day} value={day.toString()}>{day}</SelectItem>)}</SelectContent>
+                      <SelectTrigger id="day-select-h" className="h-12 text-base"><SelectValue placeholder="اليوم" /></SelectTrigger>
+                      <SelectContent>{daysInSelectedHijriMonth.map(day => <SelectItem key={day} value={day.toString()} className="text-base">{day}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
                 </div>
               </div>
-              <Button onClick={handleCalculateHijri} className="w-full text-lg py-3 bg-primary hover:bg-accent text-primary-foreground transition-transform duration-150 ease-in-out active:scale-95">
-                <CalendarIcon className="ml-2 h-5 w-5" /> احسب عمرك (هجري)
+              <Button onClick={handleCalculateHijri} className="w-full text-xl py-4 bg-primary hover:bg-accent text-primary-foreground transition-transform duration-150 ease-in-out active:scale-95">
+                <CalendarIcon className="ml-2 h-6 w-6" /> احسب عمرك (هجري)
               </Button>
             </TabsContent>
           </Tabs>
@@ -445,3 +440,4 @@ export default function AgeCalculator() {
     </div>
   );
 }
+
