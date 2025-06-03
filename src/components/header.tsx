@@ -56,6 +56,18 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Right side for RTL (Logo) */}
+        <div className="flex items-center">
+          <Link href="/" className="text-2xl font-bold text-primary font-headline">
+            كم عمري
+          </Link>
+        </div>
+
+        {/* Center Text */}
+        <div className="text-center text-sm text-muted-foreground hidden md:block px-2">
+          حاسبة العمر بالتقويمين الهجري والميلادي
+        </div>
+
         {/* Left side for RTL (Menu icon) */}
         <div className="flex items-center">
           {isMobile ? (
@@ -81,18 +93,11 @@ export default function Header() {
                   <Menu className="h-6 w-6" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-56 bg-background border-border shadow-lg">
+              <DropdownMenuContent align="end" className="w-56 bg-background border-border shadow-lg"> {/* Changed align to "end" for RTL */}
                 {renderNavLinksForDropdown()}
               </DropdownMenuContent>
             </DropdownMenu>
           )}
-        </div>
-
-        {/* Right side for RTL (Logo) */}
-        <div className="flex items-center">
-          <Link href="/" className="text-2xl font-bold text-primary font-headline">
-            كم عمري
-          </Link>
         </div>
       </div>
     </header>
