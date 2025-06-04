@@ -360,6 +360,7 @@ export default function AgeCalculator() {
       <Card className="w-full max-w-xl shadow-xl">
         <CardHeader className="text-center">
           <CardTitle className="text-3xl font-headline text-primary">حاسبة العمر الدقيقة</CardTitle>
+          
         </CardHeader>
         <CardContent className="space-y-6">
           <Tabs defaultValue="gregorian" className="w-full">
@@ -371,7 +372,7 @@ export default function AgeCalculator() {
             {/* Gregorian Input Tab */}
             <TabsContent value="gregorian" className="mt-6">
               <div className="space-y-3 mb-6">
-                <Label className="block text-xl font-medium text-foreground mb-2">تاريخ الميلاد (ميلادي):</Label>
+                <Label className="block text-xl font-medium text-foreground mb-2 text-right">تاريخ الميلاد (ميلادي):</Label>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
                     <Label htmlFor="year-select-g" className="text-lg">السنة</Label>
@@ -404,7 +405,7 @@ export default function AgeCalculator() {
             {/* Hijri Input Tab */}
             <TabsContent value="hijri" className="mt-6">
               <div className="space-y-3 mb-6">
-                <Label className="block text-xl font-medium text-foreground mb-2">تاريخ الميلاد (هجري):</Label>
+                <Label className="block text-xl font-medium text-foreground mb-2 text-right">تاريخ الميلاد (هجري):</Label>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
                     <Label htmlFor="year-select-h" className="text-lg">السنة</Label>
@@ -520,5 +521,7 @@ export default function AgeCalculator() {
     </div>
   );
 }
+
+    
 
     
