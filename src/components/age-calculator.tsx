@@ -375,21 +375,21 @@ export default function AgeCalculator() {
                 <Label className="block text-xl font-medium text-foreground mb-2 text-right">ضع تاريخ ميلادك</Label>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
-                    <Label htmlFor="year-select-g" className="text-lg">السنة</Label>
+                    
                     <Select onValueChange={handleYearChangeG} value={selectedYearG?.toString()}>
                       <SelectTrigger id="year-select-g" className="h-14 text-lg"><SelectValue placeholder="السنة" /></SelectTrigger>
                       <SelectContent>{gregorianYears.map(year => <SelectItem key={year} value={year.toString()} className="text-lg">{year}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-1">
-                    <Label htmlFor="month-select-g" className="text-lg">الشهر</Label>
+                    
                     <Select onValueChange={handleMonthChangeG} value={selectedMonthG?.toString()}>
                       <SelectTrigger id="month-select-g" className="h-14 text-lg"><SelectValue placeholder="الشهر" /></SelectTrigger>
                       <SelectContent>{months.map(month => <SelectItem key={month} value={month.toString()} className="text-lg">{month}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-1">
-                    <Label htmlFor="day-select-g" className="text-lg">اليوم</Label>
+                    
                     <Select onValueChange={handleDayChangeG} value={selectedDayG?.toString()}>
                       <SelectTrigger id="day-select-g" className="h-14 text-lg"><SelectValue placeholder="اليوم" /></SelectTrigger>
                       <SelectContent>{daysInSelectedGregorianMonth.map(day => <SelectItem key={day} value={day.toString()} className="text-lg">{day}</SelectItem>)}</SelectContent>
@@ -408,21 +408,21 @@ export default function AgeCalculator() {
                 <Label className="block text-xl font-medium text-foreground mb-2 text-right">ضع تاريخ ميلادك</Label>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
-                    <Label htmlFor="year-select-h" className="text-lg">السنة</Label>
+                    
                     <Select onValueChange={handleYearChangeH} value={selectedYearH?.toString()}>
                       <SelectTrigger id="year-select-h" className="h-14 text-lg"><SelectValue placeholder="السنة" /></SelectTrigger>
                       <SelectContent>{hijriYears.map(year => <SelectItem key={year} value={year.toString()} className="text-lg">{year}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-1">
-                    <Label htmlFor="month-select-h" className="text-lg">الشهر</Label>
+                    
                     <Select onValueChange={handleMonthChangeH} value={selectedMonthH?.toString()}>
                       <SelectTrigger id="month-select-h" className="h-14 text-lg"><SelectValue placeholder="الشهر" /></SelectTrigger>
                       <SelectContent>{months.map(monthNum => <SelectItem key={monthNum} value={monthNum.toString()} className="text-lg">{arabicHijriMonthNames[monthNum - 1]}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-1">
-                    <Label htmlFor="day-select-h" className="text-lg">اليوم</Label>
+                    
                     <Select onValueChange={handleDayChangeH} value={selectedDayH?.toString()}>
                       <SelectTrigger id="day-select-h" className="h-14 text-lg"><SelectValue placeholder="اليوم" /></SelectTrigger>
                       <SelectContent>{daysInSelectedHijriMonth.map(day => <SelectItem key={day} value={day.toString()} className="text-lg">{day}</SelectItem>)}</SelectContent>
