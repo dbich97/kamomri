@@ -11,7 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ClockIcon, GiftIcon, CalendarIcon, TimerIcon, PartyPopperIcon, AlertTriangleIcon, Facebook, Twitter, MessageSquare, Link as LinkIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -372,7 +372,7 @@ export default function AgeCalculator() {
             {/* Gregorian Input Tab */}
             <TabsContent value="gregorian" className="mt-6">
               <div className="space-y-3 mb-6">
-                <Label className="block text-xl font-medium text-foreground mb-2 text-right">تاريخ الميلاد (ميلادي):</Label>
+                <Label className="block text-xl font-medium text-foreground mb-2 text-right">ضع تاريخ ميلادك</Label>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
                     <Label htmlFor="year-select-g" className="text-lg">السنة</Label>
@@ -405,7 +405,7 @@ export default function AgeCalculator() {
             {/* Hijri Input Tab */}
             <TabsContent value="hijri" className="mt-6">
               <div className="space-y-3 mb-6">
-                <Label className="block text-xl font-medium text-foreground mb-2 text-right">تاريخ الميلاد (هجري):</Label>
+                <Label className="block text-xl font-medium text-foreground mb-2 text-right">ضع تاريخ ميلادك</Label>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
                     <Label htmlFor="year-select-h" className="text-lg">السنة</Label>
