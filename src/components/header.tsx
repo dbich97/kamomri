@@ -1,7 +1,7 @@
 
 "use client";
 
-import React from 'react'; // Added this line
+import React from 'react';
 import Link from 'next/link';
 import { Menu, Home as HomeIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -73,7 +73,7 @@ export default function Header() {
 
         {/* Center Text */}
         <div className="flex-1 text-center px-2 hidden md:block">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-base text-muted-foreground">
             حاسبة العمر بالتقويمين الهجري والميلادي
           </p>
         </div>
