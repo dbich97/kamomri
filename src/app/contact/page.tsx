@@ -3,8 +3,8 @@ import { Metadata } from 'next';
 import { Mail, MessageSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'تواصل معنا - كم عمري',
-  description: 'هل لديك سؤال أو اقتراح؟ تواصل مع فريق موقع "كم عمري". نسعد باستقبال رسائلك ونسعى للرد في أقرب وقت ممكن.',
+  title: 'تواصل مع "كم عمري" | أسئلة، اقتراحات، ودعم فني',
+  description: 'لديك سؤال أو اقتراح لموقع "كم عمري"؟ تواصل معنا بسهولة عبر البريد الإلكتروني. فريقنا جاهز لمساعدتك والرد على استفساراتك بخصوص حاسبة العمر وخدماتنا.',
 };
 
 export default function ContactPage() {
@@ -58,4 +58,3 @@ export default function ContactPage() {
     </main>
   );
 }
-
