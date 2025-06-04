@@ -13,7 +13,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ClockIcon, GiftIcon, CalendarIcon, TimerIcon, PartyPopperIcon, AlertTriangleIcon, Facebook, Twitter, MessageSquare, Link as LinkIcon } from "lucide-react";
+import { ClockIcon, GiftIcon, CalendarIcon, TimerIcon, PartyPopperIcon, AlertTriangleIcon, Facebook, Twitter, Share2, Link as LinkIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   type Age,
@@ -447,7 +447,7 @@ export default function AgeCalculator() {
                 <Twitter className="h-6 w-6" />
               </Button>
               <Button variant="ghost" size="icon" onClick={handleShareWhatsApp} aria-label="شارك على واتساب" className="rounded-full p-3 text-green-600 hover:bg-green-600/10">
-                <MessageSquare className="h-6 w-6" />
+                <Share2 className="h-6 w-6" />
               </Button>
               <Button variant="ghost" size="icon" onClick={handleCopyLink} aria-label="انسخ الرابط" className="rounded-full p-3 text-primary hover:bg-primary/10">
                 <LinkIcon className="h-6 w-6" />
@@ -525,4 +525,5 @@ export default function AgeCalculator() {
     
 
     
+
 
