@@ -359,7 +359,7 @@ export default function AgeCalculator() {
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-background">
       <Card className="w-full max-w-xl shadow-xl">
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-headline text-primary">حاسبة العمر الدقيقة</CardTitle>
+          <CardTitle className="text-3xl font-headline text-primary">حساب كم عمري</CardTitle>
           
         </CardHeader>
         <CardContent className="space-y-6">
