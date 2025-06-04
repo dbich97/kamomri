@@ -330,10 +330,10 @@ export default function AgeCalculator() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-background">
-      <Card className="w-full max-w-xl shadow-xl"> {/* Changed max-w-lg to max-w-xl */}
+      <Card className="w-full max-w-xl shadow-xl">
         <CardHeader className="text-center">
           <CardTitle className="text-3xl font-headline text-primary">حاسبة العمر الدقيقة</CardTitle>
-          <CardDescription className="text-muted-foreground">اختر طريقة الإدخال وأدخل تاريخ ميلادك</CardDescription>
+          <CardDescription className="text-muted-foreground">اختر حساب العمر بالهجري او الميلادي</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <Tabs defaultValue="gregorian" className="w-full">
@@ -494,3 +494,5 @@ export default function AgeCalculator() {
     </div>
   );
 }
+
+    
