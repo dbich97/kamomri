@@ -5,8 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import Header from '@/components/header'; // Import the Header component
 
 export const metadata: Metadata = {
-  title: 'كم عمري - حاسبة دقيقة للعمر بالهجري والميلادي',
-  description: 'موقع كم عمري يساعدك على حساب عمرك بدقة بالتقويم الميلادي والهجري. أدخل تاريخ ميلادك واكتشف عمرك بالسنوات والأشهر والأيام، مع عداد حي وعيد ميلادك القادم.',
+  title: 'كم عمري | حاسبة العمر بالهجري والميلادي',
+  description: 'موقع "كم عمري" يوفر أدوات لحساب العمر وتحويل التواريخ بين التقويمين الميلادي والهجري بدقة وسهولة.',
 };
 
 export default function RootLayout({

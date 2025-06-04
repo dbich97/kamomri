@@ -1,4 +1,11 @@
+
 import AgeCalculator from '@/components/age-calculator';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'حاسبة العمر: كم عمري بالضبط بالهجري والميلادي؟',
+  description: 'استخدم حاسبة "كم عمري" الدقيقة لمعرفة عمرك بالتفصيل (سنوات، أشهر، أيام) بالتقويمين الميلادي والهجري. أدخل تاريخ ميلادك واكتشف متى عيد ميلادك القادم!',
+};
 
 export default function Home() {
   return (
