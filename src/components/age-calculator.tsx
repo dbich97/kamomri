@@ -13,7 +13,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ClockIcon, GiftIcon, CalendarIcon, TimerIcon, PartyPopperIcon, AlertTriangleIcon, Facebook, Twitter, MessageSquare, Link as LinkIcon } from "lucide-react";
+import { ClockIcon, GiftIcon, CalendarIcon, TimerIcon, PartyPopperIcon, AlertTriangleIcon, Facebook, Twitter, MessageSquare, Link as LinkIcon, Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   type Age,
@@ -75,6 +75,8 @@ export default function AgeCalculator() {
   const [nextGregorianBirthdayCountdown, setNextGregorianBirthdayCountdown] = useState<CountdownDetails | null>(null);
   const [nextHijriBirthdayCountdown, setNextHijriBirthdayCountdown] = useState<CountdownDetails | null>(null);
   
+  const [shareResultText, setShareResultText] = useState("");
+
   const currentGregorianYear = useMemo(() => new Date().getFullYear(), []);
   const gregorianYears = useMemo(() => Array.from({ length: currentGregorianYear - 1900 + 1 }, (_, i) => currentGregorianYear - i), [currentGregorianYear]);
   const months = useMemo(() => Array.from({ length: 12 }, (_, i) => i + 1), []);
@@ -156,6 +158,58 @@ export default function AgeCalculator() {
     setSelectedDayH(dayVal);
   };
 
+  const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
+
+  const generateShareMessage = (result: GregorianCalculationResult | HijriCalculationResult | null, inputType: 'gregorian' | 'hijri'): string => {
+    if (!result) return "";
+    let message = "لقد حسبت عمري باستخدام حاسبة 'كم عمري':\n";
+    if (inputType === 'gregorian' && result && 'gregorianAge' in result && 'hijriAge' in result) {
+      const gResult = result as GregorianCalculationResult;
+      message += `عمري الميلادي: ${gResult.gregorianAge.years} سنة، ${gResult.gregorianAge.months} شهر، ${gResult.gregorianAge.days} يوم.\n`;
+      message += `عمري الهجري: ${gResult.hijriAge.years} سنة، ${gResult.hijriAge.months} شهر، ${gResult.hijriAge.days} يوم.`;
+    } else if (inputType === 'hijri' && result && 'hijriAge' in result && 'gregorianAge' in result) {
+      const hResult = result as HijriCalculationResult;
+      message += `عمري الهجري: ${hResult.hijriAge.years} سنة، ${hResult.hijriAge.months} شهر، ${hResult.hijriAge.days} يوم.\n`;
+      message += `عمري الميلادي: ${hResult.gregorianAge.years} سنة، ${hResult.gregorianAge.months} شهر، ${hResult.gregorianAge.days} يوم.`;
+    }
+    return message.trim();
+  };
+  
+  const generateCopyableResultText = (result: GregorianCalculationResult | HijriCalculationResult | null, inputType: 'gregorian' | 'hijri'): string => {
+    if (!result) return "";
+    let text = "";
+     if (inputType === 'gregorian' && result && 'gregorianAge' in result && 'hijriAge' in result) {
+      const gResult = result as GregorianCalculationResult;
+      text += `عمري الميلادي: ${gResult.gregorianAge.years} سنة، ${gResult.gregorianAge.months} شهر، ${gResult.gregorianAge.days} يوم.\n`;
+      text += `تاريخ ميلادي الميلادي: ${gResult.gregorianBirthDateFormatted}.\n`;
+      text += `عمري الهجري: ${gResult.hijriAge.years} سنة، ${gResult.hijriAge.months} شهر، ${gResult.hijriAge.days} يوم.\n`;
+      text += `تاريخ ميلادي الهجري الموافق: ${gResult.hijriBirthDateDetails.formattedDate}.`;
+    } else if (inputType === 'hijri' && result && 'hijriAge' in result && 'gregorianAge' in result) {
+      const hResult = result as HijriCalculationResult;
+      text += `عمري الهجري: ${hResult.hijriAge.years} سنة، ${hResult.hijriAge.months} شهر، ${hResult.hijriAge.days} يوم.\n`;
+      text += `تاريخ ميلادي الهجري: ${hResult.hijriInputDateDetails.formattedDate}.\n`;
+      text += `عمري الميلادي: ${hResult.gregorianAge.years} سنة، ${hResult.gregorianAge.months} شهر، ${hResult.gregorianAge.days} يوم.\n`;
+      text += `تاريخ ميلادي الميلادي الموافق: ${hResult.gregorianBirthDateFormatted}.`;
+    }
+    if (liveAge) {
+      text += `\n\nعمري الحالي بدقة: ${liveAge.years} سنة، ${liveAge.months} شهر، ${liveAge.days} يوم، ${liveAge.hours} ساعة، ${liveAge.minutes} دقيقة، و ${liveAge.seconds} ثانية.`;
+    }
+    if (inputType === 'gregorian' && nextGregorianBirthdayCountdown) {
+      if (nextGregorianBirthdayCountdown.isBirthdayToday) {
+         text += `\n\n🎉 عيد ميلادي الميلادي هو اليوم!`;
+      } else {
+        text += `\n\nعيد ميلادي الميلادي القادم بعد: ${nextGregorianBirthdayCountdown.days} يوم، ${nextGregorianBirthdayCountdown.hours} ساعة، ${nextGregorianBirthdayCountdown.minutes} دقيقة، و ${nextGregorianBirthdayCountdown.seconds} ثانية.`;
+      }
+    } else if (inputType === 'hijri' && nextHijriBirthdayCountdown) {
+       if (nextHijriBirthdayCountdown.isBirthdayToday) {
+         text += `\n\n🎉 عيد ميلادي الهجري هو اليوم!`;
+      } else {
+        text += `\n\nعيد ميلادي الهجري القادم بعد: ${nextHijriBirthdayCountdown.days} يوم، ${nextHijriBirthdayCountdown.hours} ساعة، ${nextHijriBirthdayCountdown.minutes} دقيقة، و ${nextHijriBirthdayCountdown.seconds} ثانية.`;
+      }
+    }
+    return text;
+  };
+
 
   const handleCalculateGregorian = () => {
     if (!selectedDayG || !selectedMonthG || !selectedYearG) {
@@ -170,7 +224,7 @@ export default function AgeCalculator() {
     }
     
     setShowGregorianResults(false);
-    setHijriResult(null); // Clear Hijri results when calculating Gregorian
+    setHijriResult(null); 
     setShowHijriResults(false);
     setGregorianBirthDateForCalculations(constructedBirthDate);
     setHijriBirthDayForCountdown(undefined); 
@@ -183,7 +237,9 @@ export default function AgeCalculator() {
     const hijriAge = calculateHijriAge(hijriBirthDateDetails, currentHijriDetails);
     const gregorianBirthDateFormatted = formatGregorianDate(constructedBirthDate);
 
-    setGregorianResult({ gregorianAge, hijriAge, gregorianBirthDateFormatted, hijriBirthDateDetails });
+    const newGregorianResult = { gregorianAge, hijriAge, gregorianBirthDateFormatted, hijriBirthDateDetails };
+    setGregorianResult(newGregorianResult);
+    setShareResultText(generateShareMessage(newGregorianResult, 'gregorian'));
     setTimeout(() => setShowGregorianResults(true), 50);
   };
 
@@ -205,7 +261,7 @@ export default function AgeCalculator() {
     }
 
     setShowHijriResults(false);
-    setGregorianResult(null); // Clear Gregorian results when calculating Hijri
+    setGregorianResult(null); 
     setShowGregorianResults(false);
     setGregorianBirthDateForCalculations(convertedGregorianBirthDate);
     setHijriBirthDayForCountdown(selectedDayH);
@@ -218,7 +274,7 @@ export default function AgeCalculator() {
     const hijriAge = calculateHijriAge(inputHijriDetailsDirect, currentHijriDetails);
     const gregorianBirthDateFormatted = formatGregorianDate(convertedGregorianBirthDate);
 
-    setHijriResult({ 
+    const newHijriResult = { 
         gregorianAge, 
         hijriAge, 
         gregorianBirthDateFormatted, 
@@ -230,7 +286,9 @@ export default function AgeCalculator() {
             weekdayName: inputHijriDetailsDirect.weekdayName, 
             formattedDate: `${selectedDayH} ${arabicHijriMonthNames[selectedMonthH-1]} ${selectedYearH}هـ`
         }
-    });
+    };
+    setHijriResult(newHijriResult);
+    setShareResultText(generateShareMessage(newHijriResult, 'hijri'));
     setTimeout(() => setShowHijriResults(true), 50);
   };
 
@@ -320,28 +378,27 @@ export default function AgeCalculator() {
     );
   };
 
-  const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
-  const shareTitle = "اكتشف عمرك بدقة مع حاسبة العمر هذه!";
+  const siteShareTitle = "اكتشف عمرك بدقة مع حاسبة العمر هذه!";
 
-  const handleShareFacebook = () => {
+  const handleShareSiteFacebook = () => {
     if (typeof window !== 'undefined') {
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank', 'noopener,noreferrer');
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(siteShareTitle)}`, '_blank', 'noopener,noreferrer');
     }
   };
 
-  const handleShareTwitter = () => {
+  const handleShareSiteTwitter = () => {
     if (typeof window !== 'undefined') {
-      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`, '_blank', 'noopener,noreferrer');
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(siteShareTitle)}`, '_blank', 'noopener,noreferrer');
     }
   };
 
-  const handleShareWhatsApp = () => {
+  const handleShareSiteWhatsApp = () => {
     if (typeof window !== 'undefined') {
-      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareTitle + " " + shareUrl)}`, '_blank', 'noopener,noreferrer');
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(siteShareTitle + " " + shareUrl)}`, '_blank', 'noopener,noreferrer');
     }
   };
 
-  const handleCopyLink = () => {
+  const handleCopySiteLink = () => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
       navigator.clipboard.writeText(shareUrl)
         .then(() => {
@@ -354,42 +411,72 @@ export default function AgeCalculator() {
     }
   };
 
+  const handleShareResultFacebook = () => {
+    if (typeof window !== 'undefined' && shareResultText) {
+      const fullQuote = `${shareResultText}\n\nجربها بنفسك على موقع كم عمري!`;
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(fullQuote)}`, '_blank', 'noopener,noreferrer');
+    }
+  };
+  
+  const handleShareResultTwitter = () => {
+    if (typeof window !== 'undefined' && shareResultText) {
+      const fullText = `${shareResultText}\n\nجربها بنفسك على موقع كم عمري: ${shareUrl}`;
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(fullText)}`, '_blank', 'noopener,noreferrer');
+    }
+  };
+  
+  const handleShareResultWhatsApp = () => {
+    if (typeof window !== 'undefined' && shareResultText) {
+      const fullText = `${shareResultText}\n\nجربها بنفسك على موقع كم عمري: ${shareUrl}`;
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(fullText)}`, '_blank', 'noopener,noreferrer');
+    }
+  };
+  
+  const handleCopyResult = () => {
+    const resultToCopy = generateCopyableResultText(gregorianResult || hijriResult, gregorianResult ? 'gregorian' : 'hijri');
+    if (typeof navigator !== 'undefined' && navigator.clipboard && resultToCopy) {
+      navigator.clipboard.writeText(resultToCopy)
+        .then(() => {
+          toast({ title: "تم نسخ النتيجة!", description: "تم نسخ تفاصيل عمرك إلى الحافظة.", icon: <Copy className="h-5 w-5" /> });
+        })
+        .catch(err => {
+          toast({ title: "خطأ", description: "لم نتمكن من نسخ النتيجة. الرجاء المحاولة يدويًا.", variant: "destructive", icon: <AlertTriangleIcon className="h-5 w-5"/> });
+          console.error('Failed to copy result: ', err);
+        });
+    }
+  };
+
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-background">
       <Card className="w-full max-w-xl shadow-xl">
         <CardHeader className="text-center">
           <CardTitle className="text-3xl font-headline text-primary">حساب كم عمري</CardTitle>
-          
         </CardHeader>
         <CardContent className="space-y-6">
           <Tabs defaultValue="gregorian" className="w-full">
             <TabsList className="grid w-full grid-cols-2 h-14">
-              <TabsTrigger value="gregorian" onClick={() => { setShowHijriResults(false); setHijriResult(null); }} className="text-lg py-3">حساب بالميلادي</TabsTrigger>
-              <TabsTrigger value="hijri" onClick={() => { setShowGregorianResults(false); setGregorianResult(null);}} className="text-lg py-3">حساب بالهجري</TabsTrigger>
+              <TabsTrigger value="gregorian" onClick={() => { setShowHijriResults(false); setHijriResult(null); setShareResultText(""); }} className="text-lg py-3">حساب بالميلادي</TabsTrigger>
+              <TabsTrigger value="hijri" onClick={() => { setShowGregorianResults(false); setGregorianResult(null); setShareResultText("");}} className="text-lg py-3">حساب بالهجري</TabsTrigger>
             </TabsList>
             
-            {/* Gregorian Input Tab */}
-            <TabsContent value="gregorian" className="mt-6">
+            <TabsContent value="gregorian" className="mt-6 data-[state=open]:animate-fade-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0">
               <div className="space-y-3 mb-6">
                 <Label className="block text-xl font-medium text-foreground mb-2 text-right">اختر تاريخ ميلادك</Label>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
-                    
                     <Select onValueChange={handleYearChangeG} value={selectedYearG?.toString()}>
                       <SelectTrigger id="year-select-g" className="h-14 text-lg"><SelectValue placeholder="السنة" /></SelectTrigger>
                       <SelectContent>{gregorianYears.map(year => <SelectItem key={year} value={year.toString()} className="text-lg">{year}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-1">
-                    
                     <Select onValueChange={handleMonthChangeG} value={selectedMonthG?.toString()}>
                       <SelectTrigger id="month-select-g" className="h-14 text-lg"><SelectValue placeholder="الشهر" /></SelectTrigger>
                       <SelectContent>{months.map(month => <SelectItem key={month} value={month.toString()} className="text-lg">{month}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-1">
-                    
                     <Select onValueChange={handleDayChangeG} value={selectedDayG?.toString()}>
                       <SelectTrigger id="day-select-g" className="h-14 text-lg"><SelectValue placeholder="اليوم" /></SelectTrigger>
                       <SelectContent>{daysInSelectedGregorianMonth.map(day => <SelectItem key={day} value={day.toString()} className="text-lg">{day}</SelectItem>)}</SelectContent>
@@ -402,27 +489,23 @@ export default function AgeCalculator() {
               </Button>
             </TabsContent>
 
-            {/* Hijri Input Tab */}
-            <TabsContent value="hijri" className="mt-6">
+            <TabsContent value="hijri" className="mt-6 data-[state=open]:animate-fade-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0">
               <div className="space-y-3 mb-6">
                 <Label className="block text-xl font-medium text-foreground mb-2 text-right">اختر تاريخ ميلادك</Label>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
-                    
                     <Select onValueChange={handleYearChangeH} value={selectedYearH?.toString()}>
                       <SelectTrigger id="year-select-h" className="h-14 text-lg"><SelectValue placeholder="السنة" /></SelectTrigger>
                       <SelectContent>{hijriYears.map(year => <SelectItem key={year} value={year.toString()} className="text-lg">{year}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-1">
-                    
                     <Select onValueChange={handleMonthChangeH} value={selectedMonthH?.toString()}>
                       <SelectTrigger id="month-select-h" className="h-14 text-lg"><SelectValue placeholder="الشهر" /></SelectTrigger>
                       <SelectContent>{months.map(monthNum => <SelectItem key={monthNum} value={monthNum.toString()} className="text-lg">{arabicHijriMonthNames[monthNum - 1]}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-1">
-                    
                     <Select onValueChange={handleDayChangeH} value={selectedDayH?.toString()}>
                       <SelectTrigger id="day-select-h" className="h-14 text-lg"><SelectValue placeholder="اليوم" /></SelectTrigger>
                       <SelectContent>{daysInSelectedHijriMonth.map(day => <SelectItem key={day} value={day.toString()} className="text-lg">{day}</SelectItem>)}</SelectContent>
@@ -436,20 +519,19 @@ export default function AgeCalculator() {
             </TabsContent>
           </Tabs>
 
-          {/* Social Share Section */}
           <div className="mt-8 pt-6 border-t border-border/50">
             <h3 className="text-lg font-medium text-center mb-4 text-foreground">شارك الموقع مع أصدقائك:</h3>
             <div className="flex justify-center items-center space-x-3 space-x-reverse rtl:space-x-reverse">
-              <Button variant="ghost" size="icon" onClick={handleShareFacebook} aria-label="شارك على فيسبوك" className="rounded-full p-3 text-primary hover:bg-primary/10">
+              <Button variant="ghost" size="icon" onClick={handleShareSiteFacebook} aria-label="شارك على فيسبوك" className="rounded-full p-3 text-primary hover:bg-primary/10">
                 <Facebook className="h-6 w-6" />
               </Button>
-              <Button variant="ghost" size="icon" onClick={handleShareTwitter} aria-label="شارك على تويتر" className="rounded-full p-3 text-primary hover:bg-primary/10">
+              <Button variant="ghost" size="icon" onClick={handleShareSiteTwitter} aria-label="شارك على تويتر" className="rounded-full p-3 text-primary hover:bg-primary/10">
                 <Twitter className="h-6 w-6" />
               </Button>
-              <Button variant="ghost" size="icon" onClick={handleShareWhatsApp} aria-label="شارك على واتساب" className="rounded-full p-3 text-green-600 hover:bg-green-600/10">
+              <Button variant="ghost" size="icon" onClick={handleShareSiteWhatsApp} aria-label="شارك على واتساب" className="rounded-full p-3 text-green-600 hover:bg-green-600/10">
                 <MessageSquare className="h-6 w-6" />
               </Button>
-              <Button variant="ghost" size="icon" onClick={handleCopyLink} aria-label="انسخ الرابط" className="rounded-full p-3 text-primary hover:bg-primary/10">
+              <Button variant="ghost" size="icon" onClick={handleCopySiteLink} aria-label="انسخ الرابط" className="rounded-full p-3 text-primary hover:bg-primary/10">
                 <LinkIcon className="h-6 w-6" />
               </Button>
             </div>
@@ -511,6 +593,26 @@ export default function AgeCalculator() {
                     </p>
                 </div>
             )}
+
+            {((gregorianResult && showGregorianResults) || (hijriResult && showHijriResults)) && shareResultText && (
+              <div className="w-full mt-6 pt-4 border-t border-border/50 text-center">
+                <h3 className="text-lg font-medium mb-3 text-foreground">شارك هذه النتيجة:</h3>
+                <div className="flex justify-center items-center space-x-2 space-x-reverse rtl:space-x-reverse">
+                  <Button variant="outline" size="icon" onClick={handleShareResultFacebook} aria-label="شارك النتيجة على فيسبوك" className="rounded-full p-2 text-primary hover:bg-primary/10">
+                    <Facebook className="h-5 w-5" />
+                  </Button>
+                  <Button variant="outline" size="icon" onClick={handleShareResultTwitter} aria-label="شارك النتيجة على تويتر" className="rounded-full p-2 text-primary hover:bg-primary/10">
+                    <Twitter className="h-5 w-5" />
+                  </Button>
+                  <Button variant="outline" size="icon" onClick={handleShareResultWhatsApp} aria-label="شارك النتيجة على واتساب" className="rounded-full p-2 text-green-500 hover:bg-green-500/10">
+                    <MessageSquare className="h-5 w-5" />
+                  </Button>
+                  <Button variant="outline" size="icon" onClick={handleCopyResult} aria-label="انسخ النتيجة" className="rounded-full p-2 text-primary hover:bg-primary/10">
+                    <Copy className="h-5 w-5" />
+                  </Button>
+                </div>
+              </div>
+            )}
             
             <p className="text-xs text-muted-foreground text-center pt-2">
               ملاحظة: حساب العمر بالتقويم الهجري يعتمد على التقويم الهجري الحسابي (المدني) وقد يختلف بيوم واحد عن التقويم المعتمد على رؤية الهلال مثل تقويم أم القرى.
@@ -521,10 +623,3 @@ export default function AgeCalculator() {
     </div>
   );
 }
-
-    
-
-    
-
-
-
