@@ -372,7 +372,7 @@ export default function AgeCalculator() {
             {/* Gregorian Input Tab */}
             <TabsContent value="gregorian" className="mt-6">
               <div className="space-y-3 mb-6">
-                <Label className="block text-xl font-medium text-foreground mb-2 text-right">ضع تاريخ ميلادك</Label>
+                <Label className="block text-xl font-medium text-foreground mb-2 text-right">اختر تاريخ ميلادك</Label>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
                     
@@ -405,7 +405,7 @@ export default function AgeCalculator() {
             {/* Hijri Input Tab */}
             <TabsContent value="hijri" className="mt-6">
               <div className="space-y-3 mb-6">
-                <Label className="block text-xl font-medium text-foreground mb-2 text-right">ضع تاريخ ميلادك</Label>
+                <Label className="block text-xl font-medium text-foreground mb-2 text-right">اختر تاريخ ميلادك</Label>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
                     
