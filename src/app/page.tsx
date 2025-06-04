@@ -1,5 +1,6 @@
 
 import AgeCalculator from '@/components/age-calculator';
+import AdSenseAd from '@/components/adsense-ad';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -7,10 +8,26 @@ export const metadata: Metadata = {
   description: 'استخدم حاسبة "كم عمري" الدقيقة لمعرفة عمرك بالتفصيل (سنوات، أشهر، أيام) بالتقويمين الميلادي والهجري. أدخل تاريخ ميلادك واكتشف متى عيد ميلادك القادم!',
 };
 
+// !! استبدل هذه بالقيم الحقيقية من حساب AdSense الخاص بك !!
+const ADSENSE_PUBLISHER_ID = "ca-pub-XXXXXXXXXXXXXXXX";
+const AD_SLOT_ID_1 = "YYYYYYYYYY"; // مثال لمعرف وحدة إعلانية
+const AD_SLOT_ID_2 = "ZZZZZZZZZZ"; // مثال لمعرف وحدة إعلانية آخر
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-4 selection:bg-primary selection:text-primary-foreground">
       <AgeCalculator />
+
+      {/* مثال لوضع وحدة إعلانية أسفل الحاسبة */}
+      {/* تأكد من أن ADSENSE_PUBLISHER_ID و AD_SLOT_ID_1 تم استبدالهما بقيم حقيقية */}
+      <div className="my-8 w-full max-w-xl">
+        <AdSenseAd
+          publisherId={ADSENSE_PUBLISHER_ID}
+          adSlotId={AD_SLOT_ID_1}
+          className="h-[100px] md:h-[250px]" // يمكنك تعديل الارتفاع المتوقع هنا
+        />
+      </div>
+
       <section className="w-full max-w-3xl mt-12 mb-8 px-4 text-center md:text-right">
         <h1 className="text-3xl font-headline text-primary mb-6">حاسبة العمر الدقيقة – حساب عمرك بالسنوات والأيام</h1>
         
@@ -22,6 +39,16 @@ export default function Home() {
         <p className="text-lg text-foreground mb-6 leading-relaxed">
           ببساطة، اختر طريقة الإدخال المفضلة لديك (ميلادي أو هجري)، ثم أدخل تاريخ ميلادك باستخدام القوائم المنسدلة لليوم والشهر والسنة. بعد النقر على زر "احسب عمرك"، ستقوم أداتنا الذكية بعرض مجموعة من المعلومات القيمة حول عمرك.
         </p>
+
+        {/* مثال لوضع وحدة إعلانية أخرى ضمن المحتوى */}
+        {/* تأكد من أن ADSENSE_PUBLISHER_ID و AD_SLOT_ID_2 تم استبدالهما بقيم حقيقية */}
+        <div className="my-8">
+           <AdSenseAd
+            publisherId={ADSENSE_PUBLISHER_ID}
+            adSlotId={AD_SLOT_ID_2}
+            className="h-[100px] md:h-[200px]" // يمكنك تعديل الارتفاع المتوقع هنا
+          />
+        </div>
 
         <h2 className="text-2xl font-headline text-primary mt-8 mb-4">ما الذي سأحصل عليه؟</h2>
         <div className="space-y-3 text-lg text-foreground mb-6 leading-relaxed">
