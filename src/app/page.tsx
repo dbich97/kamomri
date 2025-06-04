@@ -5,7 +5,7 @@ export default function Home() {
     <main className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-4 selection:bg-primary selection:text-primary-foreground">
       <AgeCalculator />
       <section className="w-full max-w-3xl mt-12 mb-8 px-4 text-center md:text-right">
-        <h1 className="text-3xl font-headline text-primary mb-6">كم عمري؟ اكتشف عمرك بدقة بالهجري والميلادي</h1>
+        <h1 className="text-3xl font-headline text-primary mb-6">حاسبة العمر الدقيقة – حساب عمرك بالسنوات والأيام</h1>
         
         <p className="text-lg text-foreground mb-4 leading-relaxed">
           موقع "كم عمري" هو أداتك المثالية لحساب عمرك بدقة وسهولة سواء بالتقويم الميلادي أو الهجري. هل تساءلت يومًا "كم عمري بالضبط بالسنوات والأشهر والأيام؟" أو "متى عيد ميلادي الهجري القادم؟". نقدم لك إجابات وافية ومفصلة.
