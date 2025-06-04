@@ -364,9 +364,9 @@ export default function AgeCalculator() {
         </CardHeader>
         <CardContent className="space-y-6">
           <Tabs defaultValue="gregorian" className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="gregorian" onClick={() => { setShowHijriResults(false); setHijriResult(null); }}>حساب بالميلادي</TabsTrigger>
-              <TabsTrigger value="hijri" onClick={() => { setShowGregorianResults(false); setGregorianResult(null);}}>حساب بالهجري</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-2 h-14">
+              <TabsTrigger value="gregorian" onClick={() => { setShowHijriResults(false); setHijriResult(null); }} className="text-lg py-3">حساب بالميلادي</TabsTrigger>
+              <TabsTrigger value="hijri" onClick={() => { setShowGregorianResults(false); setGregorianResult(null);}} className="text-lg py-3">حساب بالهجري</TabsTrigger>
             </TabsList>
             
             {/* Gregorian Input Tab */}
@@ -525,3 +525,4 @@ export default function AgeCalculator() {
     
 
     
+
