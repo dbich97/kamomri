@@ -17,15 +17,24 @@ export const pathnames = {
   // them separately for each locale.
   '/about': {
     en: '/about',
-    ar: '/about'
+    ar: '/about',
+    es: '/about',
+    fr: '/about',
+    de: '/about'
   },
   '/contact': {
     en: '/contact',
-    ar: '/contact'
+    ar: '/contact',
+    es: '/contact',
+    fr: '/contact',
+    de: '/contact'
   },
   '/privacy': {
     en: '/privacy',
-    ar: '/privacy'
+    ar: '/privacy',
+    es: '/privacy',
+    fr: '/privacy',
+    de: '/privacy'
   },
 
 } satisfies Pathnames<typeof locales>;
