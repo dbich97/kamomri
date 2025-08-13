@@ -133,19 +133,18 @@
     "adPlaceholderErrorId": "Error: falta `{name}`.",
     "adPlaceholderErrorInvalidId": "Error: `{name}` no es válido o falta.",
     "adPlaceholderInfo": "Editor: {publisherId} ID de Espacio: {adSlotId}",
-    "adPlaceholderNote": "Esto es un marcador de posición. Los anuncios se mostrarán en un sitio en vivo y aprobado."
+    "adPlaceholderNote": "Esto es un marcador de posición. Los anuncios se mostrarán en un sitio en vivo y aprobado.",
+    "Date": {
+      "months": [
+        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+      ],
+      "hijriMonths": [
+        "Muharram", "Safar", "Rabi' al-awwal", "Rabi' al-thani", "Jumada al-ula", "Jumada al-akhirah", "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"
+      ]
+    }
   },
   "LocaleSwitcher": {
     "label": "Cambiar idioma"
-  },
-  "Date": {
-    "months": [
-      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-    ],
-    "hijriMonths": [
-      "Muharram", "Safar", "Rabi' al-awwal", "Rabi' al-thani", "Jumada al-ula", "Jumada al-akhirah", "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"
-    ]
   }
 }
-
     

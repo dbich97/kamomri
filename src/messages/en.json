@@ -133,19 +133,18 @@
     "adPlaceholderErrorId": "Error: `{name}` is missing.",
     "adPlaceholderErrorInvalidId": "Error: `{name}` is invalid or missing.",
     "adPlaceholderInfo": "Publisher: {publisherId} Slot ID: {adSlotId}",
-    "adPlaceholderNote": "This is a placeholder. Ads will show on a live, approved site."
+    "adPlaceholderNote": "This is a placeholder. Ads will show on a live, approved site.",
+    "Date": {
+      "months": [
+        "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+      ],
+      "hijriMonths": [
+        "Muharram", "Safar", "Rabi' al-awwal", "Rabi' al-thani", "Jumada al-ula", "Jumada al-akhirah", "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"
+      ]
+    }
   },
   "LocaleSwitcher": {
     "label": "Change language"
-  },
-  "Date": {
-    "months": [
-      "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-    ],
-    "hijriMonths": [
-      "Muharram", "Safar", "Rabi' al-awwal", "Rabi' al-thani", "Jumada al-ula", "Jumada al-akhirah", "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"
-    ]
   }
 }
-
     

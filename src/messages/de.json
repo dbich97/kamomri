@@ -133,19 +133,18 @@
     "adPlaceholderErrorId": "Fehler: `{name}` fehlt.",
     "adPlaceholderErrorInvalidId": "Fehler: `{name}` ist ungültig oder fehlt.",
     "adPlaceholderInfo": "Herausgeber: {publisherId} Slot-ID: {adSlotId}",
-    "adPlaceholderNote": "Dies ist ein Platzhalter. Anzeigen werden auf einer live geschalteten und genehmigten Website angezeigt."
+    "adPlaceholderNote": "Dies ist ein Platzhalter. Anzeigen werden auf einer live geschalteten und genehmigten Website angezeigt.",
+    "Date": {
+      "months": [
+        "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"
+      ],
+      "hijriMonths": [
+        "Muharram", "Safar", "Rabi' al-awwal", "Rabi' al-thani", "Dschumada l-ula", "Dschumada l-achira", "Radschab", "Scha'ban", "Ramadan", "Schawwal", "Dhu l-qa'da", "Dhu l-hiddscha"
+      ]
+    }
   },
   "LocaleSwitcher": {
     "label": "Sprache ändern"
-  },
-  "Date": {
-    "months": [
-      "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"
-    ],
-    "hijriMonths": [
-      "Muharram", "Safar", "Rabi' al-awwal", "Rabi' al-thani", "Dschumada l-ula", "Dschumada l-achira", "Radschab", "Scha'ban", "Ramadan", "Schawwal", "Dhu l-qa'da", "Dhu l-hiddscha"
-    ]
   }
 }
-
     

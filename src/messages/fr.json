@@ -133,19 +133,18 @@
     "adPlaceholderErrorId": "Erreur : `{name}` est manquant.",
     "adPlaceholderErrorInvalidId": "Erreur : `{name}` est invalide ou manquant.",
     "adPlaceholderInfo": "Éditeur : {publisherId} ID d'Emplacement : {adSlotId}",
-    "adPlaceholderNote": "Ceci est un espace réservé. Les publicités s'afficheront sur un site en direct et approuvé."
+    "adPlaceholderNote": "Ceci est un espace réservé. Les publicités s'afficheront sur un site en direct et approuvé.",
+    "Date": {
+      "months": [
+        "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+      ],
+      "hijriMonths": [
+        "Mouharram", "Safar", "Rabi' al-awwal", "Rabi' al-thani", "Joumada al-oula", "Joumada al-akhira", "Rajab", "Cha'ban", "Ramadan", "Chawwal", "Dhou al-Qi'da", "Dhou al-Hijja"
+      ]
+    }
   },
   "LocaleSwitcher": {
     "label": "Changer de langue"
-  },
-  "Date": {
-    "months": [
-      "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
-    ],
-    "hijriMonths": [
-      "Mouharram", "Safar", "Rabi' al-awwal", "Rabi' al-thani", "Joumada al-oula", "Joumada al-akhira", "Rajab", "Cha'ban", "Ramadan", "Chawwal", "Dhou al-Qi'da", "Dhou al-Hijja"
-    ]
   }
 }
-
     
