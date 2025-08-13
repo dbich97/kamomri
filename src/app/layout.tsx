@@ -1,8 +1,9 @@
+// This is the root layout, it doesn't have locale.
+// It's used for the not-found page and the root redirect.
 
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import Header from '@/components/header'; // Import the Header component
 import Script from 'next/script';
 
 export const metadata: Metadata = {
@@ -18,13 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl">
+    // The lang and dir attributes are now on the next level down in src/app/[locale]/layout.tsx
+    <html>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet" />
         {/* AdSense Script */}
-        {/* تأكد من استبدال ADSENSE_PUBLISHER_ID أعلاه بالمعرف الصحيح */}
         {ADSENSE_PUBLISHER_ID.startsWith("ca-pub-") && (
           <Script
             async
@@ -35,7 +36,7 @@ export default function RootLayout({
         )}
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen">
-        <Header /> {/* Add the Header component here */}
+        {/* The header is now in the locale-specific layout */}
         <div className="flex-grow">
          {children}
         </div>
