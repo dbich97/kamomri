@@ -36,11 +36,7 @@ export default function RootLayout({
         )}
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen">
-        {/* The header is now in the locale-specific layout */}
-        <div className="flex-grow">
-         {children}
-        </div>
-        <Toaster />
+        {children}
       </body>
     </html>
   );
