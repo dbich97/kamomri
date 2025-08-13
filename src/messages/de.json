@@ -9,13 +9,7 @@
     "howItWorksDesc": "Wählen Sie einfach Ihre bevorzugte Eingabemethode (gregorianisch oder Hidschri) und geben Sie dann Ihr Geburtsdatum über die Dropdown-Menüs für Tag, Monat und Jahr ein. Nachdem Sie auf die Schaltfläche 'Ihr Alter berechnen' geklickt haben, zeigt unser intelligentes Tool eine Reihe wertvoller Informationen über Ihr Alter an.",
     "whatYouGetTitle": "Was werde ich bekommen?",
     "whatYouGetIntro": "Wenn Sie den 'Wie Alt Bin Ich'-Rechner verwenden, erhalten Sie:",
-    "whatYouGetPoints": [
-      "<strong>Ihr Alter im gregorianischen Kalender:</strong> detailliert in Jahren, Monaten und Tagen.",
-      "<strong>Ihr Alter im Hidschri-Kalender:</strong> detailliert in Jahren, Monaten und Tagen.",
-      "<strong>Ihr entsprechendes Geburtsdatum:</strong> Wenn Sie Ihr Geburtsdatum im gregorianischen Kalender eingeben, zeigt das Tool das entsprechende Hidschri-Datum an und umgekehrt.",
-      "<strong>Ein Live-Zähler für Ihr Alter:</strong> Sehen Sie, wie Ihr Alter vor Ihren Augen in Jahren, Monaten, Tagen, Stunden, Minuten und sogar Sekunden zunimmt!",
-      "<strong>Der Countdown zu Ihrem nächsten Geburtstag:</strong> Machen Sie sich bereit für Ihre nächste Feier! Das Tool zeigt die verbleibende Zeit bis zu Ihrem nächsten Geburtstag genau an, egal ob gregorianisch oder Hidschri, basierend auf Ihrer Eingabemethode für das Geburtsdatum."
-    ],
+    "whatYouGetPoints": "<ul><li><strong>Ihr Alter im gregorianischen Kalender:</strong> detailliert in Jahren, Monaten und Tagen.</li><li><strong>Ihr Alter im Hidschri-Kalender:</strong> detailliert in Jahren, Monaten und Tagen.</li><li><strong>Ihr entsprechendes Geburtsdatum:</strong> Wenn Sie Ihr Geburtsdatum im gregorianischen Kalender eingeben, zeigt das Tool das entsprechende Hidschri-Datum an und umgekehrt.</li><li><strong>Ein Live-Zähler für Ihr Alter:</strong> Sehen Sie, wie Ihr Alter vor Ihren Augen in Jahren, Monaten, Tagen, Stunden, Minuten und sogar Sekunden zunimmt!</li><li><strong>Der Countdown zu Ihrem nächsten Geburtstag:</strong> Machen Sie sich bereit für Ihre nächste Feier! Das Tool zeigt die verbleibende Zeit bis zu Ihrem nächsten Geburtstag genau an, egal ob gregorianisch oder Hidschri, basierend auf Ihrer Eingabemethode für das Geburtsdatum.</li></ul>",
     "whyUseTitle": "Warum die 'Wie Alt Bin Ich'-Website nutzen?",
     "whyUseDesc1": "Das 'Wie Alt Bin Ich'-Tool ist so konzipiert, dass es einfach zu bedienen ist. Wir verwenden präzise Algorithmen zur Altersberechnung und Datumsumrechnung und berücksichtigen dabei die Details beider Kalender, um zuverlässige Ergebnisse zu liefern. Ob Sie Ihr Alter für einen besonderen Anlass wissen möchten, den Lauf der Zeit verfolgen oder einfach nur aus Neugier, 'Wie Alt Bin Ich' ist Ihre erste Anlaufstelle.",
     "whyUseDesc2": "Hinweis: Die Altersberechnung im Hidschri-Kalender basiert auf dem tabellarischen (zivilen) Hidschri-Kalender und kann sich um einen Tag von dem auf der Mondsichtung basierenden Kalender, wie dem Umm-al-Qura-Kalender, unterscheiden. Viel Spaß beim Entdecken der Details Ihres Alters und teilen Sie die Seite mit Ihren Freunden!"
@@ -147,4 +141,3 @@
     "label": "Sprache ändern"
   }
 }
-    

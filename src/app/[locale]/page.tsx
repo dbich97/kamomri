@@ -78,12 +78,11 @@ export default async function Home({ params: { locale } }: { params: { locale: L
             <h2 className="text-2xl font-headline text-primary mt-8 mb-4">{t('whatYouGetTitle')}</h2>
             <div className="space-y-3 text-lg text-foreground mb-6 leading-relaxed">
               <p>{t('whatYouGetIntro')}</p>
-              <ul className="list-disc list-inside pr-4 space-y-2">
-                {t.rich('whatYouGetPoints', {
+              {t.rich('whatYouGetPoints', {
                   strong: (chunks) => <strong>{chunks}</strong>,
+                  ul: (chunks) => <ul className="list-disc list-inside pr-4 space-y-2">{chunks}</ul>,
                   li: (chunks) => <li>{chunks}</li>
-                })}
-              </ul>
+              })}
             </div>
 
             <h2 className="text-2xl font-headline text-primary mt-8 mb-4">{t('whyUseTitle')}</h2>

@@ -9,13 +9,7 @@
     "howItWorksDesc": "Simplement, choisissez votre méthode de saisie préférée (grégorienne ou hégirienne), puis entrez votre date de naissance en utilisant les menus déroulants pour le jour, le mois et l'année. Après avoir cliqué sur le bouton 'Calculez Votre Âge', notre outil intelligent affichera un ensemble d'informations précieuses sur votre âge.",
     "whatYouGetTitle": "Qu'est-ce que j'obtiendrai ?",
     "whatYouGetIntro": "En utilisant le calculateur 'Quel Âge Ai-je ?', vous obtiendrez :",
-    "whatYouGetPoints": [
-      "<strong>Votre âge dans le calendrier grégorien :</strong> détaillé en années, mois et jours.",
-      "<strong>Votre âge dans le calendrier hégirien :</strong> détaillé en années, mois et jours.",
-      "<strong>Votre date de naissance correspondante :</strong> Si vous entrez votre date de naissance en grégorien, l'outil affichera la date hégirienne correspondante, et vice versa.",
-      "<strong>Un compteur en direct de votre âge :</strong> Voyez votre âge augmenter sous vos yeux en années, mois, jours, heures, minutes et même secondes !",
-      "<strong>Le compte à rebours jusqu'à votre prochain anniversaire :</strong> Préparez-vous pour votre prochaine célébration ! L'outil affiche avec précision le temps restant jusqu'à votre prochain anniversaire, qu'il soit grégorien ou hégirien, en fonction de votre méthode de saisie de la date de naissance."
-    ],
+    "whatYouGetPoints": "<ul><li><strong>Votre âge dans le calendrier grégorien :</strong> détaillé en années, mois et jours.</li><li><strong>Votre âge dans le calendrier hégirien :</strong> détaillé en années, mois et jours.</li><li><strong>Votre date de naissance correspondante :</strong> Si vous entrez votre date de naissance en grégorien, l'outil affichera la date hégirienne correspondante, et vice versa.</li><li><strong>Un compteur en direct de votre âge :</strong> Voyez votre âge augmenter sous vos yeux en années, mois, jours, heures, minutes et même secondes !</li><li><strong>Le compte à rebours jusqu'à votre prochain anniversaire :</strong> Préparez-vous pour votre prochaine célébration ! L'outil affiche avec précision le temps restant jusqu'à votre prochain anniversaire, qu'il soit grégorien ou hégirien, en fonction de votre méthode de saisie de la date de naissance.</li></ul>",
     "whyUseTitle": "Pourquoi utiliser le site 'Quel Âge Ai-je ?' ?",
     "whyUseDesc1": "L'outil 'Quel Âge Ai-je ?' est conçu pour être facile à utiliser. Nous utilisons des algorithmes précis pour le calcul de l'âge et la conversion des dates, en tenant compte des détails des deux calendriers pour fournir des résultats fiables. Que vous souhaitiez connaître votre âge pour une occasion spéciale, pour suivre le passage du temps, ou simplement par curiosité, 'Quel Âge Ai-je ?' est votre première destination.",
     "whyUseDesc2": "Remarque : Le calcul de l'âge dans le calendrier hégirien est basé sur le calendrier hégirien tabulaire (civil) et peut différer d'un jour par rapport au calendrier basé sur l'observation de la lune, comme le calendrier Umm al-Qura. Profitez de la découverte des détails de votre âge et partagez le site avec vos amis !"
@@ -147,4 +141,3 @@
     "label": "Changer de langue"
   }
 }
-    

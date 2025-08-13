@@ -9,13 +9,7 @@
     "howItWorksDesc": "Simplemente, elige tu método de entrada preferido (gregoriano o hégira), luego introduce tu fecha de nacimiento usando los menús desplegables para día, mes y año. Después de hacer clic en el botón 'Calcular Tu Edad', nuestra herramienta inteligente mostrará un conjunto de información valiosa sobre tu edad.",
     "whatYouGetTitle": "¿Qué obtendré?",
     "whatYouGetIntro": "Al usar la calculadora '¿Qué Edad Tengo?', obtendrás:",
-    "whatYouGetPoints": [
-      "<strong>Tu edad en el calendario gregoriano:</strong> detallada en años, meses y días.",
-      "<strong>Tu edad en el calendario hégira:</strong> detallada en años, meses y días.",
-      "<strong>Tu fecha de nacimiento correspondiente:</strong> Si introduces tu fecha de nacimiento en gregoriano, la herramienta mostrará la fecha hégira correspondiente, y viceversa.",
-      "<strong>Un contador en vivo de tu edad:</strong> ¡Mira cómo aumenta tu edad ante tus ojos en años, meses, días, horas, minutos e incluso segundos!",
-      "<strong>La cuenta regresiva para tu próximo cumpleaños:</strong> ¡Prepárate para tu próxima celebración! La herramienta muestra con precisión el tiempo restante hasta tu próximo cumpleaños, ya sea gregoriano o hégira, según el método de entrada de tu fecha de nacimiento."
-    ],
+    "whatYouGetPoints": "<ul><li><strong>Tu edad en el calendario gregoriano:</strong> detallada en años, meses y días.</li><li><strong>Tu edad en el calendario hégira:</strong> detallada en años, meses y días.</li><li><strong>Tu fecha de nacimiento correspondiente:</strong> Si introduces tu fecha de nacimiento en gregoriano, la herramienta mostrará la fecha hégira correspondiente, y viceversa.</li><li><strong>Un contador en vivo de tu edad:</strong> ¡Mira cómo aumenta tu edad ante tus ojos en años, meses, días, horas, minutos e incluso segundos!</li><li><strong>La cuenta regresiva para tu próximo cumpleaños:</strong> ¡Prepárate para tu próxima celebración! La herramienta muestra con precisión el tiempo restante hasta tu próximo cumpleaños, ya sea gregoriano o hégira, según el método de entrada de tu fecha de nacimiento.</li></ul>",
     "whyUseTitle": "¿Por qué usar el sitio '¿Qué Edad Tengo?'?",
     "whyUseDesc1": "La herramienta '¿Qué Edad Tengo?' está diseñada para ser fácil de usar. Usamos algoritmos precisos para el cálculo de la edad y la conversión de fechas, considerando los detalles de ambos calendarios para proporcionar resultados fiables. Ya sea que quieras saber tu edad para una ocasión especial, para seguir el paso del tiempo o simplemente por curiosidad, '¿Qué Edad Tengo?' es tu primer destino.",
     "whyUseDesc2": "Nota: El cálculo de la edad en el calendario hégira se basa en el calendario hégira tabular (civil) y puede diferir en un día del calendario basado en la observación de la luna, como el calendario de Umm al-Qura. ¡Disfruta descubriendo los detalles de tu edad y comparte el sitio con tus amigos!"
@@ -147,4 +141,3 @@
     "label": "Cambiar idioma"
   }
 }
-    

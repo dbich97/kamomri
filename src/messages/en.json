@@ -9,13 +9,7 @@
     "howItWorksDesc": "Simply, choose your preferred input method (Gregorian or Hijri), then enter your date of birth using the dropdown menus for day, month, and year. After clicking the 'Calculate Your Age' button, our smart tool will display a set of valuable information about your age.",
     "whatYouGetTitle": "What will I get?",
     "whatYouGetIntro": "When using the 'How Old Am I' calculator, you will get:",
-    "whatYouGetPoints": [
-      "<strong>Your age in the Gregorian calendar:</strong> detailed in years, months, and days.",
-      "<strong>Your age in the Hijri calendar:</strong> detailed in years, months, and days.",
-      "<strong>Your corresponding birth date:</strong> If you enter your birth date in Gregorian, the tool will display the corresponding Hijri date, and vice versa.",
-      "<strong>A live counter for your age:</strong> Watch your age increase before your eyes in years, months, days, hours, minutes, and even seconds!",
-      "<strong>The countdown to your next birthday:</strong> Get ready for your next celebration! The tool accurately displays the remaining time until your next birthday, whether Gregorian or Hijri, based on your date of birth input method."
-    ],
+    "whatYouGetPoints": "<ul><li><strong>Your age in the Gregorian calendar:</strong> detailed in years, months, and days.</li><li><strong>Your age in the Hijri calendar:</strong> detailed in years, months, and days.</li><li><strong>Your corresponding birth date:</strong> If you enter your birth date in Gregorian, the tool will display the corresponding Hijri date, and vice versa.</li><li><strong>A live counter for your age:</strong> Watch your age increase before your eyes in years, months, days, hours, minutes, and even seconds!</li><li><strong>The countdown to your next birthday:</strong> Get ready for your next celebration! The tool accurately displays the remaining time until your next birthday, whether Gregorian or Hijri, based on your date of birth input method.</li></ul>",
     "whyUseTitle": "Why use the 'How Old Am I' website?",
     "whyUseDesc1": "The 'How Old Am I' tool is designed to be easy to use with a full English interface that supports left-to-right alignment. We use precise algorithms for age calculation and date conversion, considering the details of both calendars to provide reliable results. Whether you want to know your age for a special occasion, to track the passage of time, or just out of curiosity, 'How Old Am I' is your first destination.",
     "whyUseDesc2": "Note: Age calculation in the Hijri calendar is based on the tabular (civil) Hijri calendar and may differ by one day from the calendar based on moon sighting, like the Umm al-Qura calendar. Enjoy discovering the details of your age and share the site with your friends!"
@@ -147,4 +141,3 @@
     "label": "Change language"
   }
 }
-    
