@@ -1,0 +1,37 @@
+{
+  "HomePage": {
+    "metaTitle": "Calculadora de edad: ¿Qué edad tengo en Hijri y Gregoriano?",
+    "metaDescription": "Utilice la calculadora de edad precisa \"Kam Omri\" para averiguar su edad detallada (años, meses, días) en los calendarios gregoriano e hijri. ¡Ingrese su fecha de nacimiento y descubra cuándo es su próximo cumpleaños!",
+    "mainTitle": "Calculadora de edad precisa: calcule su edad en años y días"
+  },
+  "AboutPage": {
+    "metaTitle": "Sobre nosotros | El equipo de \"Kam Omri\" | Nuestra misión y visión para la calculadora de edad",
+    "metaDescription": "Conozca al apasionado equipo detrás del sitio web \"Kam Omri\". Descubra nuestra misión de proporcionar una calculadora de edad precisa y fácil de usar que admita los calendarios Hijri y Gregoriano, y nuestra visión para servirle mejor.",
+    "title": "Sobre nosotros"
+  },
+  "ContactPage": {
+    "metaTitle": "Contacte a \"Kam Omri\" | Preguntas, sugerencias y soporte técnico",
+    "metaDescription": "¿Tiene alguna pregunta o sugerencia para el sitio web \"Kam Omri\"? Contáctenos fácilmente por correo electrónico. Nuestro equipo está listo para ayudarlo y responder sus consultas sobre nuestra calculadora de edad y servicios.",
+    "title": "Contacto"
+  },
+  "PrivacyPage": {
+    "metaTitle": "Política de privacidad de \"Kam Omri\" | Cómo protegemos sus datos",
+    "metaDescription": "Descubra cómo \"Kam Omri\" protege su privacidad. En esta política de privacidad, explicamos cómo se procesan (y no se recopilan) sus datos al usar la calculadora de edad, y nuestro compromiso de proteger su información.",
+    "title": "política de privacidad"
+  },
+  "Header": {
+    "home": "Hogar",
+    "about": "Acerca de",
+    "privacy": "Privacidad",
+    "contact": "Contacto",
+    "menu": "Menú",
+    "siteName": "Kam Omri"
+  },
+  "AgeCalculator": {
+    "title": "Calculadora de cuantos años tengo"
+  },
+  "LocaleSwitcher": {
+    "label": "Cambiar idioma"
+  }
+}
+    

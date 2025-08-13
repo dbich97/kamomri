@@ -17,10 +17,10 @@ export const pathnames = {
   // them separately for each locale.
   '/about': {
     en: '/about',
-    ar: '/about',
-    es: '/about',
-    fr: '/about',
-    de: '/about'
+    ar: '/about-us',
+    es: '/sobre-nosotros',
+    fr: '/a-propos',
+    de: '/ueber-uns'
   },
   '/contact': {
     en: '/contact',

@@ -1,6 +1,4 @@
 
-import { arSA } from 'date-fns/locale';
-
 export interface Age {
   years: number;
   months: number;
@@ -30,27 +28,37 @@ export interface HijriDateDetails {
   formattedDate: string;
 }
 
-export const arabicHijriMonthNames: string[] = [
-  'محرم', 'صفر', 'ربيع الأول', 'ربيع الثاني', 'جمادى الأولى', 'جمادى الآخرة',
-  'رجب', 'شعبان', 'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة'
-];
+const getLocaleForIntl = (locale: string) => {
+    switch (locale) {
+        case 'ar': return 'ar-SA';
+        case 'en': return 'en-US';
+        case 'es': return 'es-ES';
+        case 'fr': return 'fr-FR';
+        case 'de': return 'de-DE';
+        default: return 'en-US';
+    }
+}
 
-export function getHijriDateDetails(gregorianDate: Date): HijriDateDetails {
-  const baseLocale = 'ar-SA'; 
+export function getHijriDateDetails(gregorianDate: Date, locale: string): HijriDateDetails {
+  const intlLocale = getLocaleForIntl(locale);
+  const baseLocaleWithCalendar = `${intlLocale}-u-ca-islamic`;
 
-  const numFormatter = new Intl.DateTimeFormat(baseLocale + '-u-ca-islamic-nu-latn', {
+  const numFormatter = new Intl.DateTimeFormat(baseLocaleWithCalendar + '-nu-latn', {
     year: 'numeric',
     month: 'numeric',
     day: 'numeric',
+    timeZone: 'UTC'
   });
-  const nameFormatter = new Intl.DateTimeFormat(baseLocale + '-u-ca-islamic-nu-arab', {
+  const nameFormatter = new Intl.DateTimeFormat(baseLocaleWithCalendar, {
     month: 'long',
     weekday: 'long',
+    timeZone: 'UTC'
   });
-   const fullDateFormatter = new Intl.DateTimeFormat(baseLocale + '-u-ca-islamic-nu-arab', {
+   const fullDateFormatter = new Intl.DateTimeFormat(baseLocaleWithCalendar, {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'UTC'
   });
 
   const numParts = numFormatter.formatToParts(gregorianDate);
@@ -90,14 +98,10 @@ export function calculateGregorianAge(birthDate: Date, currentDate: Date): Age {
 
 export function getDaysInHijriMonthArithmetic(year: number, month: number): number {
   if (month < 1 || month > 12) throw new Error('Invalid Hijri month');
-  // For Dhu al-Hijjah (month 12), determine if it's a leap year in the arithmetic calendar
   if (month === 12) {
-    // Common algorithm for arithmetic Islamic calendar (e.g., civil or tabular)
-    // Leap years occur in a 30-year cycle at years 2, 5, 7, 10, 13, 16, 18, 21, 24, 26, 29
-    const isLeap = (11 * year + 14) % 30 < 11; // This is one common formula for type II
+    const isLeap = (11 * year + 14) % 30 < 11;
     return isLeap ? 30 : 29;
   }
-  // Odd months have 30 days, even months have 29 days (except Dhu al-Hijjah)
   return month % 2 === 1 ? 30 : 29;
 }
 
@@ -123,17 +127,16 @@ export function calculateHijriAge(
   return { years, months, days };
 }
 
-export function formatGregorianDate(date: Date): string {
-  return new Intl.DateTimeFormat('ar-SA', {
+export function formatGregorianDate(date: Date, locale: string): string {
+  const intlLocale = getLocaleForIntl(locale);
+  return new Intl.DateTimeFormat(intlLocale, {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
     weekday: 'long',
+    timeZone: 'UTC'
   }).format(date);
 }
-
-export const datePickerLocale = arSA;
-
 
 export function calculateLiveAgeDetails(birthDate: Date): LiveAgeDetails {
   const now = new Date();
@@ -158,7 +161,6 @@ export function calculateLiveAgeDetails(birthDate: Date): LiveAgeDetails {
   }
   if (days < 0) {
     months--;
-    // Get days in the previous Gregorian month
     const lastDayOfPrevMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
     days += lastDayOfPrevMonth;
   }
@@ -213,75 +215,53 @@ export function calculateNextBirthdayDetails(birthDate: Date): CountdownDetails 
   };
 }
 
-// Function to convert Hijri date to Gregorian
-// Note: This is an iterative approach and might be slow for large date ranges or very old dates.
-// It assumes the Intl.DateTimeFormat for 'ar-SA-u-ca-islamic' is consistent.
-export function convertHijriToGregorian(hYear: number, hMonth: number, hDay: number): Date | null {
-  // Estimate Gregorian year: Hijri year is approx 0.97 of Gregorian year. Epoch around 622 AD.
-  const estimatedGregorianYear = Math.floor(hYear * 0.970224 /* 354.367056 / 365.2425 days in H/G year */) + 621;
+export function convertHijriToGregorian(hYear: number, hMonth: number, hDay: number, locale: string): Date | null {
+  const estimatedGregorianYear = Math.floor(hYear * 0.970224) + 621;
+  let gregorianDate = new Date(Date.UTC(estimatedGregorianYear - 1, 0, 1));
 
-  // Start iterating from a bit before the estimated year to be safe
-  let gregorianDate = new Date(Date.UTC(estimatedGregorianYear - 1, 0, 1)); // Jan 1 of (est. year - 1)
-
-  // Iterate for a maximum of ~3 Gregorian years (366 days * 3)
   for (let i = 0; i < 366 * 3; i++) {
-    const hijriDetails = getHijriDateDetails(gregorianDate);
+    const hijriDetails = getHijriDateDetails(gregorianDate, locale);
     if (hijriDetails.year === hYear && hijriDetails.month === hMonth && hijriDetails.day === hDay) {
-      // Create a new Date object in local timezone from UTC components
       return new Date(gregorianDate.getUTCFullYear(), gregorianDate.getUTCMonth(), gregorianDate.getUTCDate());
     }
     gregorianDate.setUTCDate(gregorianDate.getUTCDate() + 1);
   }
-  return null; // Return null if no matching Gregorian date is found within the search range
+  return null;
 }
-
 
 export function calculateNextHijriBirthdayDetails(
   hijriBirthDay: number, 
   hijriBirthMonth: number, 
-  currentGregorianDateForReference: Date
+  currentGregorianDateForReference: Date,
+  locale: string
 ): CountdownDetails | null {
-  const currentHijriDetails = getHijriDateDetails(currentGregorianDateForReference);
-  
+  const currentHijriDetails = getHijriDateDetails(currentGregorianDateForReference, locale);
   let targetHijriYear = currentHijriDetails.year;
 
-  // Check if birthday for this Hijri year has passed
   if (currentHijriDetails.month > hijriBirthMonth || 
       (currentHijriDetails.month === hijriBirthMonth && currentHijriDetails.day > hijriBirthDay)) {
     targetHijriYear++;
   }
 
-  // Validate day for target month/year
   const daysInTargetMonth = getDaysInHijriMonthArithmetic(targetHijriYear, hijriBirthMonth);
   if (hijriBirthDay > daysInTargetMonth) {
-    // This case implies an invalid original birth date (e.g., 30th of a 29-day month)
-    // Or, the target year's specific month has fewer days.
-    // For simplicity, we'll assume original birth date was valid and look for next possible occurrence.
-    // This edge case handling can be more sophisticated.
-    // For now, if invalid, we can't calculate.
     console.warn(`Target Hijri birthday ${hijriBirthDay}/${hijriBirthMonth}/${targetHijriYear} is invalid. Days in month: ${daysInTargetMonth}`);
-    // return null; // Or try to find the next valid date. For now, let's try to convert.
   }
 
-
-  const gregorianNextHijriBirthday = convertHijriToGregorian(targetHijriYear, hijriBirthMonth, Math.min(hijriBirthDay, daysInTargetMonth));
+  const gregorianNextHijriBirthday = convertHijriToGregorian(targetHijriYear, hijriBirthMonth, Math.min(hijriBirthDay, daysInTargetMonth), locale);
 
   if (!gregorianNextHijriBirthday) {
-    return null; // Conversion failed
+    return null;
   }
   
-  // Set time to start of day for comparison, or use specific birth time if available
   gregorianNextHijriBirthday.setHours(0, 0, 0, 0); 
   const now = new Date(currentGregorianDateForReference);
-  now.setHours(0,0,0,0); // Compare day-wise
+  now.setHours(0,0,0,0);
 
   let diff = gregorianNextHijriBirthday.getTime() - now.getTime();
 
-  // If diff is negative, it means the calculated next birthday is in the past (e.g. due to time of day, or conversion nuances)
-  // or today. We should ensure it's truly in the future or handle today.
   if (diff < 0 && !(now.getFullYear() === gregorianNextHijriBirthday.getFullYear() && now.getMonth() === gregorianNextHijriBirthday.getMonth() && now.getDate() === gregorianNextHijriBirthday.getDate())) {
-      // Birthday already passed this year, try next Hijri year for the target date.
-      const nextYearGregorianBirthday = convertHijriToGregorian(targetHijriYear + 1, hijriBirthMonth, Math.min(hijriBirthDay, getDaysInHijriMonthArithmetic(targetHijriYear+1, hijriBirthMonth)));
+      const nextYearGregorianBirthday = convertHijriToGregorian(targetHijriYear + 1, hijriBirthMonth, Math.min(hijriBirthDay, getDaysInHijriMonthArithmetic(targetHijriYear+1, hijriBirthMonth)), locale);
       if (nextYearGregorianBirthday) {
         nextYearGregorianBirthday.setHours(0,0,0,0);
         diff = nextYearGregorianBirthday.getTime() - now.getTime();
@@ -290,25 +270,15 @@ export function calculateNextHijriBirthdayDetails(
       }
   }
   
-  // Ensure diff is not negative before calculating days, hours, etc.
   diff = Math.max(0, diff);
 
-
-  const daysDiff = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hoursDiff = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutesDiff = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const secondsDiff = Math.floor((diff % (1000 * 60)) / 1000);
-  
   const isTodayHijriBirthday = currentHijriDetails.month === hijriBirthMonth && currentHijriDetails.day === hijriBirthDay;
 
-  // For countdown, we want hours/minutes/seconds relative to current time, not just start of day.
-  // Re-calculate diff with current time if not birthday today.
   let preciseDiff = gregorianNextHijriBirthday.getTime() - currentGregorianDateForReference.getTime();
-   if (preciseDiff < 0 && !isTodayHijriBirthday) { // If it's past, use next year's date for precise countdown
-     const nextActualGregorianBirthday = convertHijriToGregorian(targetHijriYear + 1, hijriBirthMonth, Math.min(hijriBirthDay, getDaysInHijriMonthArithmetic(targetHijriYear+1, hijriBirthMonth)));
+   if (preciseDiff < 0 && !isTodayHijriBirthday) {
+     const nextActualGregorianBirthday = convertHijriToGregorian(targetHijriYear + 1, hijriBirthMonth, Math.min(hijriBirthDay, getDaysInHijriMonthArithmetic(targetHijriYear+1, hijriBirthMonth)), locale);
      if (nextActualGregorianBirthday) {
-        // Keep original birth time if available, otherwise start of day
-        const originalBirthDate = convertHijriToGregorian(1400, hijriBirthMonth, hijriBirthDay); // Dummy year
+        const originalBirthDate = convertHijriToGregorian(1400, hijriBirthMonth, hijriBirthDay, locale);
         if(originalBirthDate){
             nextActualGregorianBirthday.setHours(originalBirthDate.getHours(), originalBirthDate.getMinutes(), originalBirthDate.getSeconds());
         }
@@ -316,7 +286,6 @@ export function calculateNextHijriBirthdayDetails(
      }
    }
    preciseDiff = Math.max(0, preciseDiff);
-
 
   return { 
     days: Math.floor(preciseDiff / (1000 * 60 * 60 * 24)), 
@@ -326,3 +295,5 @@ export function calculateNextHijriBirthdayDetails(
     isBirthdayToday: isTodayHijriBirthday
   };
 }
+
+    

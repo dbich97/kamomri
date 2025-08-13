@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { Link, usePathname } from '@/navigation';
+import { useTranslations } from 'next-intl';
 import { Menu, Home as HomeIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -16,16 +17,17 @@ import {
 import { useIsMobile } from '@/hooks/use-mobile';
 import LanguageSwitcher from './language-switcher';
 
-const navLinks = [
-  { href: "/", label: "الرئيسية" },
-  { href: "/about", label: "من نحن" },
-  { href: "/privacy", label: "سياسة الخصوصية" },
-  { href: "/contact", label: "تواصل معنا" },
-];
-
 export default function Header() {
+  const t = useTranslations('Header');
   const isMobile = useIsMobile();
   const pathname = usePathname();
+
+  const navLinks = [
+    { href: "/", label: t('home') },
+    { href: "/about", label: t('about') },
+    { href: "/privacy", label: t('privacy') },
+    { href: "/contact", label: t('contact') },
+  ];
 
   const renderNavLinksForSheet = () => (
     navLinks.map((link) => (
@@ -52,13 +54,13 @@ export default function Header() {
              {isMobile && (
                  <Sheet>
                   <SheetTrigger asChild>
-                    <Button variant="ghost" size="icon" aria-label="فتح القائمة">
+                    <Button variant="ghost" size="icon" aria-label={t('menu')}>
                       <Menu className="h-6 w-6" />
                     </Button>
                   </SheetTrigger>
                   <SheetContent side="left" className="w-full max-w-xs sm:max-w-sm bg-background p-0">
                     <SheetHeader className="p-6 pb-4 border-b">
-                      <SheetTitle className="text-xl font-headline text-primary text-right">القائمة</SheetTitle>
+                      <SheetTitle className="text-xl font-headline text-primary text-right">{t('menu')}</SheetTitle>
                     </SheetHeader>
                     <nav className="flex flex-col space-y-1 p-4">
                       {renderNavLinksForSheet()}
@@ -86,7 +88,7 @@ export default function Header() {
 
         <div className="flex items-center">
           <Link href="/" className="text-2xl font-bold text-primary font-headline">
-            كم عمري
+            {t('siteName')}
           </Link>
         </div>
 
@@ -94,3 +96,5 @@ export default function Header() {
     </header>
   );
 }
+
+    

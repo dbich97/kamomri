@@ -2,7 +2,7 @@
 'use client';
 
 import { usePathname, useRouter, locales } from '@/navigation';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import {
   Select,
   SelectContent,
@@ -25,6 +25,7 @@ export default function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
   const locale = useLocale();
+  const t = useTranslations('LocaleSwitcher');
 
   const handleLocaleChange = (newLocale: string) => {
     router.replace(pathname, { locale: newLocale });
@@ -32,9 +33,9 @@ export default function LanguageSwitcher() {
 
   return (
     <Select onValueChange={handleLocaleChange} defaultValue={locale}>
-      <SelectTrigger className="w-auto border-0 bg-transparent focus:ring-0 focus:ring-offset-0 gap-2">
+      <SelectTrigger className="w-auto border-0 bg-transparent focus:ring-0 focus:ring-offset-0 gap-2" aria-label={t('label')}>
          <Globe className="h-5 w-5 text-primary" />
-         <SelectValue placeholder="Language" />
+         <SelectValue placeholder={t('label')} />
       </SelectTrigger>
       <SelectContent align="end">
         {locales.map((loc) => (
@@ -46,3 +47,5 @@ export default function LanguageSwitcher() {
     </Select>
   );
 }
+
+    

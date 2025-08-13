@@ -1,40 +1,35 @@
 
 import { Metadata } from 'next';
+import { Link } from '@/navigation';
+import { getTranslations } from 'next-intl/server';
+import type { Locale } from '@/i18n';
 
-export const metadata: Metadata = {
-  title: 'من نحن؟ فريق "كم عمري" | مهمتنا ورؤيتنا لحاسبة العمر',
-  description: 'تعرّف على الفريق الشغوف خلف موقع "كم عمري". اكتشف مهمتنا في تقديم حاسبة عمر دقيقة وسهلة تدعم التقويم الهجري والميلادي، ورؤيتنا لخدمتك بشكل أفضل.',
-};
+export async function generateMetadata({ params: { locale } }: { params: { locale: Locale } }): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'AboutPage' });
+ 
+  return {
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+  };
+}
 
-export default function AboutPage() {
+export default async function AboutPage({ params: { locale } }: { params: { locale: Locale } }) {
+  const t = await getTranslations('AboutPage');
   return (
     <main className="min-h-screen bg-background text-foreground py-8 px-4 md:px-8 selection:bg-primary selection:text-primary-foreground">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-headline text-primary mb-8 text-center md:text-right">
-          من نحن
+          {t('title')}
         </h1>
         
         <article className="prose prose-lg lg:prose-xl dark:prose-invert max-w-none text-foreground leading-relaxed space-y-6 text-right">
+          <p>{t('p1')}</p>
+          <p>{t('p2')}</p>
+          <p>{t('p3')}</p>
           <p>
-            مرحبًا بك في موقع "كم عمري"! نحن فريق شغوف بتوفير أدوات سهلة الاستخدام ومفيدة للجميع. 
-            هدفنا الأساسي من خلال هذا الموقع هو تقديم حاسبة عمر دقيقة وموثوقة تتيح لك معرفة عمرك بالتفصيل 
-            سواء بالتقويم الميلادي أو الهجري.
-          </p>
-          <p>
-            ندرك أن معرفة العمر بدقة، أو تتبع الوقت المتبقي لمناسبة خاصة مثل عيد الميلاد، يمكن أن يكون 
-            مهمًا للكثيرين. لذلك، عملنا على تطوير أداة "كم عمري" لتكون بسيطة في تصميمها، قوية في 
-            وظائفها، وتدعم اللغة العربية بشكل كامل مع مراعاة اتجاه النص من اليمين إلى اليسار لتقديم 
-            أفضل تجربة مستخدم ممكنة لجمهورنا العربي.
-          </p>
-          <p>
-            في "كم عمري"، نؤمن بأن التكنولوجيا يجب أن تكون في خدمة الإنسان، ونسعى لجعل المعلومات 
-            المتعلقة بالوقت والتواريخ متاحة وسهلة الفهم. حساباتنا تعتمد على خوارزميات قياسية لضمان 
-            الدقة قدر الإمكان، مع الأخذ في الاعتبار الفروقات بين التقويمين الميلادي والهجري.
-          </p>
-          <p>
-            نشكرك على زيارة موقعنا واستخدام أداتنا. نأمل أن تجدها مفيدة وممتعة. إذا كان لديك أي 
-            اقتراحات أو ملاحظات، فلا تتردد في <a href="/contact" className="text-primary hover:underline">التواصل معنا</a>. 
-            نحن دائمًا سعداء بسماع آرائكم التي تساعدنا على تطوير وتحسين خدماتنا.
+            {t.rich('p4', {
+              link: (chunks) => <Link href="/contact" className="text-primary hover:underline">{chunks}</Link>
+            })}
           </p>
         </article>
       </div>

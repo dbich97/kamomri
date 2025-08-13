@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface AdSenseAdProps {
   className?: string;
@@ -24,16 +25,17 @@ const AdSenseAd: React.FC<AdSenseAdProps> = ({
   adSlotId,
   adFormat = 'auto',
 }) => {
+  const t = useTranslations('AgeCalculator');
   useEffect(() => {
     try {
       if (typeof window !== 'undefined' && window.adsbygoogle) {
         window.adsbygoogle.push({});
       }
     } catch (error) {
-      // يمكنك تسجيل الخطأ هنا إذا كنت ترغب في ذلك، ولكن كن حذرًا من إظهار الكثير من المعلومات في الإنتاج
+      // You can log the error here if you wish, but be careful not to expose too much information in production
       // console.error('Failed to push AdSense ad:', error);
     }
-  }, [adSlotId, publisherId]); // إعادة التشغيل إذا تغير معرف الوحدة أو الناشر
+  }, [adSlotId, publisherId]);
 
   if (!publisherId || !adSlotId || !publisherId.startsWith("ca-pub-")) {
     if (process.env.NODE_ENV === 'development') {
@@ -47,11 +49,11 @@ const AdSenseAd: React.FC<AdSenseAdProps> = ({
           color: '#333',
           ...style
         }}>
-          <p style={{ fontWeight: 'bold' }}>AdSense Placeholder (وحدة إعلانية)</p>
-          {(!publisherId || !publisherId.startsWith("ca-pub-")) && <p style={{ color: 'red', margin: '5px 0' }}>خطأ: `publisherId` غير صالح أو مفقود.</p>}
-          {!adSlotId && <p style={{ color: 'red', margin: '5px 0' }}>خطأ: `adSlotId` مفقود.</p>}
-          {publisherId && adSlotId && <p>الناشر: {publisherId}<br/>معرف الوحدة: {adSlotId}</p>}
-          <p style={{ fontSize: '0.8em', marginTop: '10px' }}>هذا عنصر نائب. ستظهر الإعلانات على موقع مباشر ومعتمد.</p>
+          <p style={{ fontWeight: 'bold' }}>{t('adPlaceholderText')}</p>
+          {(!publisherId || !publisherId.startsWith("ca-pub-")) && <p style={{ color: 'red', margin: '5px 0' }}>{t('adPlaceholderErrorInvalidId', { name: 'publisherId' })}</p>}
+          {!adSlotId && <p style={{ color: 'red', margin: '5px 0' }}>{t('adPlaceholderErrorId', { name: 'adSlotId' })}</p>}
+          {publisherId && adSlotId && <p>{t('adPlaceholderInfo', { publisherId, adSlotId })}</p>}
+          <p style={{ fontSize: '0.8em', marginTop: '10px' }}>{t('adPlaceholderNote')}</p>
         </div>
       );
     }
@@ -73,3 +75,5 @@ const AdSenseAd: React.FC<AdSenseAdProps> = ({
 };
 
 export default AdSenseAd;
+
+    

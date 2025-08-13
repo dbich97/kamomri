@@ -1,0 +1,37 @@
+{
+  "HomePage": {
+    "metaTitle": "Altersrechner: Wie alt bin ich in Hijri und Gregorianisch?",
+    "metaDescription": "Verwenden Sie den genauen „Kam Omri“-Altersrechner, um Ihr detailliertes Alter (Jahre, Monate, Tage) in beiden gregorianischen und Hijri-Kalendern herauszufinden. Geben Sie Ihr Geburtsdatum ein und entdecken Sie, wann Ihr nächster Geburtstag ist!",
+    "mainTitle": "Genauer Altersrechner – Berechnen Sie Ihr Alter in Jahren und Tagen"
+  },
+  "AboutPage": {
+    "metaTitle": "Über uns | Das „Kam Omri“-Team | Unsere Mission und Vision für den Altersrechner",
+    "metaDescription": "Lernen Sie das leidenschaftliche Team hinter der „Kam Omri“-Website kennen. Entdecken Sie unsere Mission, einen genauen und benutzerfreundlichen Altersrechner bereitzustellen, der sowohl Hijri- als auch gregorianische Kalender unterstützt, und unsere Vision, Ihnen besser zu dienen.",
+    "title": "Über uns"
+  },
+  "ContactPage": {
+    "metaTitle": "Kontaktieren Sie „Kam Omri“ | Fragen, Anregungen und technischer Support",
+    "metaDescription": "Haben Sie eine Frage oder einen Vorschlag für die „Kam Omri“-Website? Kontaktieren Sie uns einfach per E-Mail. Unser Team ist bereit, Ihnen zu helfen und Ihre Anfragen zu unserem Altersrechner und unseren Dienstleistungen zu beantworten.",
+    "title": "Kontakt"
+  },
+  "PrivacyPage": {
+    "metaTitle": "Datenschutzrichtlinie für „Kam Omri“ | Wie wir Ihre Daten schützen",
+    "metaDescription": "Entdecken Sie, wie „Kam Omri“ Ihre Privatsphäre schützt. In dieser Datenschutzrichtlinie erklären wir, wie Ihre Daten bei der Nutzung des Altersrechners verarbeitet (und nicht gesammelt) werden, und unsere Verpflichtung zum Schutz Ihrer Informationen.",
+    "title": "Datenschutz-Bestimmungen"
+  },
+  "Header": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "privacy": "Datenschutz",
+    "contact": "Kontakt",
+    "menu": "Menü",
+    "siteName": "Kam Omri"
+  },
+  "AgeCalculator": {
+    "title": "Wie alt bin ich Rechner"
+  },
+  "LocaleSwitcher": {
+    "label": "Sprache ändern"
+  }
+}
+    

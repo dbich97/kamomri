@@ -1,0 +1,37 @@
+{
+  "HomePage": {
+    "metaTitle": "Calculateur d'âge : Quel âge ai-je en hégirien et en grégorien ?",
+    "metaDescription": "Utilisez le calculateur d'âge précis « Kam Omri » pour connaître votre âge détaillé (années, mois, jours) dans les calendriers grégorien et hégirien. Entrez votre date de naissance et découvrez quand est votre prochain anniversaire !",
+    "mainTitle": "Calculateur d'âge précis – Calculez votre âge en années et en jours"
+  },
+  "AboutPage": {
+    "metaTitle": "À propos de nous | L'équipe « Kam Omri » | Notre mission et notre vision pour le calculateur d'âge",
+    "metaDescription": "Rencontrez l'équipe passionnée derrière le site Web « Kam Omri ». Découvrez notre mission de fournir un calculateur d'âge précis et facile à utiliser qui prend en charge les calendriers hégirien et grégorien, et notre vision pour mieux vous servir.",
+    "title": "À propos de nous"
+  },
+  "ContactPage": {
+    "metaTitle": "Contacter « Kam Omri » | Questions, suggestions et support technique",
+    "metaDescription": "Vous avez une question ou une suggestion pour le site « Kam Omri » ? Contactez-nous facilement par email. Notre équipe est prête à vous aider et à répondre à vos questions sur notre calculateur d'âge et nos services.",
+    "title": "Contact"
+  },
+  "PrivacyPage": {
+    "metaTitle": "Politique de confidentialité de « Kam Omri » | Comment nous protégeons vos données",
+    "metaDescription": "Découvrez comment « Kam Omri » protège votre vie privée. Dans cette politique de confidentialité, nous expliquons comment vos données sont traitées (et non collectées) lors de l'utilisation du calculateur d'âge, ainsi que notre engagement à protéger vos informations.",
+    "title": "Politique de confidentialité"
+  },
+  "Header": {
+    "home": "Accueil",
+    "about": "À propos",
+    "privacy": "Confidentialité",
+    "contact": "Contact",
+    "menu": "Menu",
+    "siteName": "Kam Omri"
+  },
+  "AgeCalculator": {
+    "title": "Calculateur quel âge j'ai"
+  },
+  "LocaleSwitcher": {
+    "label": "Changer de langue"
+  }
+}
+    
