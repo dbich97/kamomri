@@ -3,10 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Header from '@/components/header';
 import { locales } from '@/navigation';
 import { notFound } from 'next/navigation';
-import { Inter } from 'next/font/google';
-
-// If you have a font variable, you can define it here.
-// const inter = Inter({ subsets: ['latin'] })
+import {NextIntlClientProvider, useMessages} from 'next-intl';
 
 export default function LocaleLayout({
   children,
@@ -19,17 +16,17 @@ export default function LocaleLayout({
   if (!locales.includes(locale as any)) notFound();
 
   unstable_setRequestLocale(locale);
-  const dir = locale === 'ar' ? 'rtl' : 'ltr';
+  const messages = useMessages();
 
   // The <html> and <body> tags are defined in the root layout (src/app/layout.tsx)
   // This layout should only contain the components specific to the locale.
   return (
-    <>
+    <NextIntlClientProvider locale={locale} messages={messages}>
         <Header />
         <div className="flex-grow">
          {children}
         </div>
         <Toaster />
-    </>
+    </NextIntlClientProvider>
   );
 }
