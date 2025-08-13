@@ -49,6 +49,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
+        {/* Left side */}
         <div className="flex items-center gap-x-2">
             <LanguageSwitcher />
              {isMobile && (
@@ -70,8 +71,9 @@ export default function Header() {
              )}
         </div>
 
-        <div className="flex-1 text-center px-2 hidden md:block">
-          <nav className="flex justify-center items-center space-x-6">
+        {/* Right side */}
+        <div className="flex items-center gap-x-6">
+           <nav className="hidden md:flex md:gap-x-6">
              {navLinks.map(link => (
                  <Link
                     key={link.label}
@@ -84,9 +86,7 @@ export default function Header() {
                  </Link>
              ))}
           </nav>
-        </div>
 
-        <div className="flex items-center">
           <Link href="/" className="text-2xl font-bold text-primary font-headline">
             {t('siteName')}
           </Link>
@@ -96,5 +96,3 @@ export default function Header() {
     </header>
   );
 }
-
-    
