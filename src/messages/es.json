@@ -1,37 +1,151 @@
+
 {
   "HomePage": {
-    "metaTitle": "Calculadora de edad: ¿Qué edad tengo en Hijri y Gregoriano?",
-    "metaDescription": "Utilice la calculadora de edad precisa \"Kam Omri\" para averiguar su edad detallada (años, meses, días) en los calendarios gregoriano e hijri. ¡Ingrese su fecha de nacimiento y descubra cuándo es su próximo cumpleaños!",
-    "mainTitle": "Calculadora de edad precisa: calcule su edad en años y días"
+    "metaTitle": "Calculadora de Edad: ¿Qué Edad Tengo Exactamente en Hégira y Gregoriano?",
+    "metaDescription": "Usa la calculadora de edad precisa '¿Qué Edad Tengo?' para saber tu edad en detalle (años, meses, días) en los calendarios gregoriano e hégira. ¡Introduce tu fecha de nacimiento y descubre cuándo es tu próximo cumpleaños!",
+    "mainTitle": "Calculadora de Edad Precisa – Calcula tu Edad en Años y Días",
+    "intro": "El sitio '¿Qué Edad Tengo?' es tu herramienta ideal para calcular tu edad de forma precisa y fácil tanto en el calendario gregoriano como en el hégira. ¿Alguna vez te has preguntado 'qué edad tengo exactamente en años, meses y días?' o '¿cuándo es mi próximo cumpleaños hégira?'. Te ofrecemos respuestas completas y detalladas.",
+    "howItWorksTitle": "¿Cómo funciona la calculadora '¿Qué Edad Tengo?'?",
+    "howItWorksDesc": "Simplemente, elige tu método de entrada preferido (gregoriano o hégira), luego introduce tu fecha de nacimiento usando los menús desplegables para día, mes y año. Después de hacer clic en el botón 'Calcular Tu Edad', nuestra herramienta inteligente mostrará un conjunto de información valiosa sobre tu edad.",
+    "whatYouGetTitle": "¿Qué obtendré?",
+    "whatYouGetIntro": "Al usar la calculadora '¿Qué Edad Tengo?', obtendrás:",
+    "whatYouGetPoints": [
+      "<strong>Tu edad en el calendario gregoriano:</strong> detallada en años, meses y días.",
+      "<strong>Tu edad en el calendario hégira:</strong> detallada en años, meses y días.",
+      "<strong>Tu fecha de nacimiento correspondiente:</strong> Si introduces tu fecha de nacimiento en gregoriano, la herramienta mostrará la fecha hégira correspondiente, y viceversa.",
+      "<strong>Un contador en vivo de tu edad:</strong> ¡Mira cómo aumenta tu edad ante tus ojos en años, meses, días, horas, minutos e incluso segundos!",
+      "<strong>La cuenta regresiva para tu próximo cumpleaños:</strong> ¡Prepárate para tu próxima celebración! La herramienta muestra con precisión el tiempo restante hasta tu próximo cumpleaños, ya sea gregoriano o hégira, según el método de entrada de tu fecha de nacimiento."
+    ],
+    "whyUseTitle": "¿Por qué usar el sitio '¿Qué Edad Tengo?'?",
+    "whyUseDesc1": "La herramienta '¿Qué Edad Tengo?' está diseñada para ser fácil de usar. Usamos algoritmos precisos para el cálculo de la edad y la conversión de fechas, considerando los detalles de ambos calendarios para proporcionar resultados fiables. Ya sea que quieras saber tu edad para una ocasión especial, para seguir el paso del tiempo o simplemente por curiosidad, '¿Qué Edad Tengo?' es tu primer destino.",
+    "whyUseDesc2": "Nota: El cálculo de la edad en el calendario hégira se basa en el calendario hégira tabular (civil) y puede diferir en un día del calendario basado en la observación de la luna, como el calendario de Umm al-Qura. ¡Disfruta descubriendo los detalles de tu edad y comparte el sitio con tus amigos!"
   },
   "AboutPage": {
-    "metaTitle": "Sobre nosotros | El equipo de \"Kam Omri\" | Nuestra misión y visión para la calculadora de edad",
-    "metaDescription": "Conozca al apasionado equipo detrás del sitio web \"Kam Omri\". Descubra nuestra misión de proporcionar una calculadora de edad precisa y fácil de usar que admita los calendarios Hijri y Gregoriano, y nuestra visión para servirle mejor.",
-    "title": "Sobre nosotros"
+    "metaTitle": "¿Quiénes Somos? El Equipo de '¿Qué Edad Tengo?' | Nuestra Misión y Visión para la Calculadora de Edad",
+    "metaDescription": "Conoce al apasionado equipo detrás del sitio web '¿Qué Edad Tengo?'. Descubre nuestra misión de proporcionar una calculadora de edad precisa y fácil de usar que admita los calendarios hégira y gregoriano, y nuestra visión para servirte mejor.",
+    "title": "Sobre Nosotros",
+    "p1": "¡Bienvenido a '¿Qué Edad Tengo?'! Somos un equipo apasionado por ofrecer herramientas fáciles de usar y útiles para todos. Nuestro objetivo principal con este sitio es ofrecer una calculadora de edad precisa y fiable que te permita conocer tu edad en detalle tanto en el calendario gregoriano como en el hégira.",
+    "p2": "Entendemos que saber la edad con precisión, o seguir el tiempo que queda para una ocasión especial como un cumpleaños, puede ser importante para muchos. Por lo tanto, hemos trabajado para desarrollar la herramienta '¿Qué Edad Tengo?' para que sea simple en su diseño, potente en sus funciones y totalmente compatible con el idioma español para proporcionar la mejor experiencia de usuario posible.",
+    "p3": "En '¿Qué Edad Tengo?', creemos que la tecnología debe servir a las personas, y nos esforzamos por hacer que la información relacionada con el tiempo y las fechas sea accesible y fácil de entender. Nuestros cálculos se basan en algoritmos estándar para garantizar la mayor precisión posible, teniendo en cuenta las diferencias entre los calendarios gregoriano e hégira.",
+    "p4": "Gracias por visitar nuestro sitio y usar nuestra herramienta. Esperamos que la encuentres útil y agradable. Si tienes alguna sugerencia o comentario, no dudes en <link>contactarnos</link>. Siempre nos alegra escuchar tus opiniones, que nos ayudan a desarrollar y mejorar nuestros servicios."
   },
   "ContactPage": {
-    "metaTitle": "Contacte a \"Kam Omri\" | Preguntas, sugerencias y soporte técnico",
-    "metaDescription": "¿Tiene alguna pregunta o sugerencia para el sitio web \"Kam Omri\"? Contáctenos fácilmente por correo electrónico. Nuestro equipo está listo para ayudarlo y responder sus consultas sobre nuestra calculadora de edad y servicios.",
-    "title": "Contacto"
+    "metaTitle": "Contacta con '¿Qué Edad Tengo?' | Preguntas, Sugerencias y Soporte Técnico",
+    "metaDescription": "¿Tienes alguna pregunta o sugerencia para el sitio web '¿Qué Edad Tengo?'? Contáctanos fácilmente por correo electrónico. Nuestro equipo está listo para ayudarte y responder a tus consultas sobre la calculadora de edad y nuestros servicios.",
+    "title": "Contáctanos",
+    "p1": "¡En '¿Qué Edad Tengo?', siempre nos alegra saber de ti! Ya sea que tengas una pregunta, una gran idea para mejorar el sitio, o simplemente quieras saludar, nuestro equipo está aquí para escuchar y responder. Creemos que tu comunicación es la clave de nuestro desarrollo, y esperamos recibir tus valiosos mensajes.",
+    "emailTitle": "Por Correo Electrónico",
+    "emailDesc": "Para cualquier consulta o sugerencia, puedes enviarnos un correo electrónico directamente a la siguiente dirección. Nos comprometemos a revisar cuidadosamente todos los mensajes y responderlos lo antes posible.",
+    "futureTitle": "Futuros Canales de Comunicación",
+    "futureDesc": "Actualmente estamos trabajando en la expansión de nuestros canales de comunicación para incluir plataformas adicionales que nos permitan servirte mejor y más rápido. ¡Mantente atento a nuestras actualizaciones! Por ahora, el correo electrónico sigue siendo nuestro principal medio de comunicación efectiva.",
+    "p2": "Gracias por tu confianza en '¿Qué Edad Tengo?'. Tus comentarios y sugerencias son una fuente de inspiración para nosotros, y siempre esperamos contribuir a mejorar tu experiencia."
   },
   "PrivacyPage": {
-    "metaTitle": "Política de privacidad de \"Kam Omri\" | Cómo protegemos sus datos",
-    "metaDescription": "Descubra cómo \"Kam Omri\" protege su privacidad. En esta política de privacidad, explicamos cómo se procesan (y no se recopilan) sus datos al usar la calculadora de edad, y nuestro compromiso de proteger su información.",
-    "title": "política de privacidad"
+    "metaTitle": "Política de Privacidad de '¿Qué Edad Tengo?' | Cómo Protegemos Tus Datos",
+    "metaDescription": "Descubre cómo '¿Qué Edad Tengo?' protege tu privacidad. En esta política de privacidad, explicamos cómo se procesan (y no se recopilan) tus datos al usar la calculadora de edad, y nuestro compromiso de proteger tu información.",
+    "title": "Política de Privacidad",
+    "p1": "En '¿Qué Edad Tengo?', la privacidad de nuestros visitantes es de extrema importancia para nosotros. Este documento de política de privacidad describe los tipos de información personal que no se recopilan ni reciben por '¿Qué Edad Tengo?' y cómo se utiliza (o no se utiliza) la información.",
+    "processedInfoTitle": "Información que Procesamos",
+    "processedInfoDesc": "Cuando utilizas la herramienta de calculadora de edad en '¿Qué Edad Tengo?', todos los datos que introduces (fecha de nacimiento) se procesan directamente en tu navegador (Client-Side). <strong>No recopilamos, almacenamos ni transferimos las fechas de nacimiento ni ninguna otra información personal que introduzcas en la calculadora de edad en nuestros servidores.</strong> Todo el proceso se realiza localmente en tu dispositivo.",
+    "cookiesTitle": "Cookies",
+    "cookiesDesc": "'¿Qué Edad Tengo?' puede utilizar cookies esenciales para mejorar la experiencia del usuario y garantizar que el sitio funcione correctamente. Estos archivos no rastrean información personal. Podemos utilizar servicios de análisis de terceros (como Google Analytics) que pueden usar cookies para recopilar información no personal sobre cómo los visitantes usan el sitio (como las páginas visitadas, la duración de la visita, etc.). Esta información nos ayuda a entender cómo se utiliza nuestro sitio y a mejorarlo. Puedes optar por desactivar las cookies a través de la configuración de tu navegador.",
+    "sharingTitle": "Intercambio de Datos con Terceros",
+    "sharingDesc": "No compartimos ningún dato personal con terceros, simplemente porque no lo recopilamos a través de la herramienta de calculadora de edad. La información analítica agregada (si la hay) es anónima y se utiliza únicamente para fines de mejora del sitio.",
+    "linksTitle": "Enlaces a Otros Sitios",
+    "linksDesc": "Nuestro sitio puede contener enlaces a otros sitios. Si haces clic en un enlace de un tercero, serás dirigido al sitio de ese tercero. Ten en cuenta que no operamos estos sitios externos. Por lo tanto, te recomendamos encarecidamente que revises la Política de Privacidad de estos sitios web. No tenemos control ni asumimos ninguna responsabilidad por el contenido, las políticas de privacidad o las prácticas de los sitios o servicios de terceros.",
+    "securityTitle": "Seguridad de los Datos",
+    "securityDesc": "Dado que no recopilamos datos de fecha de nacimiento en nuestros servidores, el riesgo de que estos datos se vean comprometidos por nuestra parte es inexistente. La seguridad de tus datos cuando se introducen localmente depende de la seguridad de tu dispositivo y navegador.",
+    "changesTitle": "Cambios a Esta Política de Privacidad",
+    "changesDesc": "Podemos actualizar nuestra Política de Privacidad de vez en cuando. Te notificaremos cualquier cambio publicando la nueva Política de Privacidad en esta página. Se te recomienda revisar esta Política de Privacidad periódicamente para cualquier cambio. Los cambios a esta Política de Privacidad son efectivos cuando se publican en esta página.",
+    "contactTitle": "Contáctanos",
+    "contactDesc": "Si tienes alguna pregunta o sugerencia sobre nuestra Política de Privacidad, no dudes en <link>contactarnos</link>.",
+    "lastUpdated": "Última Actualización:"
   },
   "Header": {
-    "home": "Hogar",
-    "about": "Acerca de",
+    "home": "Inicio",
+    "about": "Sobre Nosotros",
     "privacy": "Privacidad",
     "contact": "Contacto",
     "menu": "Menú",
-    "siteName": "Kam Omri"
+    "siteName": "¿Qué Edad Tengo?"
   },
   "AgeCalculator": {
-    "title": "Calculadora de cuantos años tengo"
+    "title": "Calculadora de ¿Qué Edad Tengo?",
+    "gregorianTab": "Calcular por Gregoriano",
+    "hijriTab": "Calcular por Hégira",
+    "dateOfBirthLabel": "Selecciona tu fecha de nacimiento",
+    "yearPlaceholder": "Año",
+    "monthPlaceholder": "Mes",
+    "dayPlaceholder": "Día",
+    "calculateGregorianButton": "Calcular Edad (Gregoriano)",
+    "calculateHijriButton": "Calcular Edad (Hégira)",
+    "shareSiteTitle": "Comparte el sitio con tus amigos:",
+    "shareOnFacebook": "Compartir en Facebook",
+    "shareOnTwitter": "Compartir en Twitter",
+    "shareOnWhatsApp": "Compartir en WhatsApp",
+    "copyLink": "Copiar Enlace",
+    "ageInGregorian": "Tu Edad en el Calendario Gregoriano:",
+    "ageInHijri": "Tu Edad en el Calendario Hégira:",
+    "years": "{count, plural, one {# año} other {# años}}",
+    "months": "{count, plural, one {# mes} other {# meses}}",
+    "days": "{count, plural, one {# día} other {# días}}",
+    "hours": "{count, plural, one {# hora} other {# horas}}",
+    "minutes": "{count, plural, one {# minuto} other {# minutos}}",
+    "seconds": "{count, plural, one {# segundo} other {# segundos}}",
+    "and": "y",
+    "yourAgeIs": "{years}, {months}, y {days}",
+    "gregorianDob": "Tu Fecha de Nacimiento Gregoriana:",
+    "hijriDob": "Tu Fecha de Nacimiento Hégira:",
+    "equivalentTo": "Equivalente a:",
+    "nextGregorianBirthday": "Tu Próximo Cumpleaños Gregoriano es en:",
+    "nextHijriBirthday": "Tu Próximo Cumpleaños Hégira es en:",
+    "liveAgeTitle": "Tu Edad Actual Precisa:",
+    "countdownIs": "{days}, {hours}, {minutes}, y {seconds}",
+    "happyBirthday": "¡🎉 Feliz Cumpleaños {calendar}! ¡Has completado otro año hoy! 🎉",
+    "yourBirthdayIsToday": "¡🎉 ¡Tu cumpleaños {calendar} es hoy! 🎉",
+    "shareResultTitle": "Comparte este resultado:",
+    "copyResult": "Copiar Resultado",
+    "hijriNote": "Nota: El cálculo de la edad en el calendario hégira se basa en el calendario hégira tabular (civil) y puede diferir en un día del calendario basado en la observación de la luna, como el calendario de Umm al-Qura.",
+    "toastErrorTitle": "Error de Entrada",
+    "toastErrorDate": "Por favor, selecciona el día, mes y año de nacimiento.",
+    "toastErrorInvalidDate": "La fecha de nacimiento no es válida o es futura.",
+    "toastErrorConversion": "No se pudo encontrar una fecha gregoriana coincidente para la fecha hégira introducida.",
+    "toastErrorInvalidDay": "El mes seleccionado solo tiene {count} días.",
+    "toastCopyLinkSuccess": "Enlace del sitio copiado al portapapeles.",
+    "toastCopyLinkError": "No se pudo copiar el enlace.",
+    "toastCopyResultSuccess": "Los detalles de tu edad han sido copiados al portapapeles.",
+    "toastCopyResultError": "No se pudo copiar el resultado.",
+    "siteShareMessage": "¡Averigua tu edad exacta con esta calculadora de edad!",
+    "resultShareMessage": "Calculé mi edad usando la calculadora '¿Qué Edad Tengo?':",
+    "myGregorianAge": "Mi Edad Gregoriana: {age}",
+    "myHijriAge": "Mi Edad Hégira: {age}",
+    "myGregorianFullDob": "Mi Fecha de Nacimiento Gregoriana: {date}",
+    "myHijriFullDob": "Fecha de Nacimiento Hégira Correspondiente: {date}",
+    "myHijriInputDob": "Mi Fecha de Nacimiento Hégira: {date}",
+    "myGregorianInputDob": "Fecha de Nacimiento Gregoriana Correspondiente: {date}",
+    "currentPreciseAge": "Mi edad precisa actual: {details}",
+    "nextGregorianBirthdayCountdown": "Mi próximo cumpleaños gregoriano es en: {countdown}",
+    "nextHijriBirthdayCountdown": "Mi próximo cumpleaños hégira es en: {countdown}",
+    "itsMyGregorianBirthday": "¡🎉 ¡Hoy es mi cumpleaños gregoriano!",
+    "itsMyHijriBirthday": "¡🎉 ¡Hoy es mi cumpleaños hégira!",
+    "tryItYourself": "¡Pruébalo tú mismo en ¿Qué Edad Tengo?!",
+    "adPlaceholderText": "Unidad de Anuncios",
+    "adPlaceholderErrorId": "Error: falta `{name}`.",
+    "adPlaceholderErrorInvalidId": "Error: `{name}` no es válido o falta.",
+    "adPlaceholderInfo": "Editor: {publisherId} ID de Espacio: {adSlotId}",
+    "adPlaceholderNote": "Esto es un marcador de posición. Los anuncios se mostrarán en un sitio en vivo y aprobado."
   },
   "LocaleSwitcher": {
     "label": "Cambiar idioma"
+  },
+  "Date": {
+    "months": [
+      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ],
+    "hijriMonths": [
+      "Muharram", "Safar", "Rabi' al-awwal", "Rabi' al-thani", "Jumada al-ula", "Jumada al-akhirah", "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"
+    ]
   }
 }
+
     
