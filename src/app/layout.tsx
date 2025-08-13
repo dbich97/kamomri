@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: 'موقع "كم عمري" يوفر أدوات لحساب العمر وتحويل التواريخ بين التقويمين الميلادي والهجري بدقة وسهولة.',
 };
 
-const ADSENSE_PUBLISHER_ID = "ca-pub-XXXXXXXXXXXXXXXX"; // !! استبدل هذا بمعرف الناشر الخاص بك !!
+const ADSENSE_PUBLISHER_ID = "ca-pub-7009948592297613";
 
 export default function RootLayout({
   children,

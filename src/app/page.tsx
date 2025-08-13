@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 };
 
 // !! استبدل هذه بالقيم الحقيقية من حساب AdSense الخاص بك !!
-const ADSENSE_PUBLISHER_ID = "ca-pub-XXXXXXXXXXXXXXXX";
-const AD_SLOT_ID_1 = "YYYYYYYYYY"; // مثال لمعرف وحدة إعلانية (أسفل الحاسبة)
-const AD_SLOT_ID_2 = "ZZZZZZZZZZ"; // مثال لمعرف وحدة إعلانية (ضمن النص)
-const AD_SLOT_ID_LEFT_SKYSCRAPER = "SKYSCRAPER_L"; // !! استبدل هذا بمعرف الوحدة الإعلانية الطولية اليسرى !!
-const AD_SLOT_ID_RIGHT_SKYSCRAPER = "SKYSCRAPER_R"; // !! استبدل هذا بمعرف الوحدة الإعلانية الطولية اليمنى !!
+const ADSENSE_PUBLISHER_ID = "ca-pub-7009948592297613";
+const AD_SLOT_ID_1 = "5474745346"; // 300x250 or responsive
+const AD_SLOT_ID_2 = "5474745346"; // Same responsive ad for in-article
+const AD_SLOT_ID_LEFT_SKYSCRAPER = "4208128655"; // 160x600
+const AD_SLOT_ID_RIGHT_SKYSCRAPER = "4208128655"; // 160x600
 
 export default function Home() {
   return (
