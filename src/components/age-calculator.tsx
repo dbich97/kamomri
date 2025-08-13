@@ -50,7 +50,7 @@ interface HijriCalculationResult {
 export default function AgeCalculator() {
   const t = useTranslations('AgeCalculator');
   const locale = useLocale();
-  const tDate = useTranslations('Date');
+  const tDate = useTranslations('AgeCalculator.Date');
   const { toast } = useToast();
 
   // Gregorian Inputs
@@ -166,7 +166,7 @@ export default function AgeCalculator() {
 
   const generateShareMessage = (result: GregorianCalculationResult | HijriCalculationResult | null, inputType: 'gregorian' | 'hijri'): string => {
     if (!result) return "";
-    let message = t('resultShareMessage') + "\n";
+    let message = t('resultShareMessage') + "\\n";
     const formatAge = (age: Age) => t('yourAgeIs', {
         years: t('years', { count: age.years }),
         months: t('months', { count: age.months }),
@@ -174,11 +174,11 @@ export default function AgeCalculator() {
     });
     if (inputType === 'gregorian' && result && 'gregorianAge' in result && 'hijriAge' in result) {
       const gResult = result as GregorianCalculationResult;
-      message += t('myGregorianAge', { age: formatAge(gResult.gregorianAge) }) + "\n";
+      message += t('myGregorianAge', { age: formatAge(gResult.gregorianAge) }) + "\\n";
       message += t('myHijriAge', { age: formatAge(gResult.hijriAge) });
     } else if (inputType === 'hijri' && result && 'hijriAge' in result && 'gregorianAge' in result) {
       const hResult = result as HijriCalculationResult;
-      message += t('myHijriAge', { age: formatAge(hResult.hijriAge) }) + "\n";
+      message += t('myHijriAge', { age: formatAge(hResult.hijriAge) }) + "\\n";
       message += t('myGregorianAge', { age: formatAge(hResult.gregorianAge) });
     }
     return message.trim();
@@ -194,15 +194,15 @@ export default function AgeCalculator() {
     });
      if (inputType === 'gregorian' && result && 'gregorianAge' in result && 'hijriAge' in result) {
       const gResult = result as GregorianCalculationResult;
-      text += t('myGregorianAge', { age: formatAge(gResult.gregorianAge) }) + "\n";
-      text += t('myGregorianFullDob', { date: gResult.gregorianBirthDateFormatted }) + "\n";
-      text += t('myHijriAge', { age: formatAge(gResult.hijriAge) }) + "\n";
+      text += t('myGregorianAge', { age: formatAge(gResult.gregorianAge) }) + "\\n";
+      text += t('myGregorianFullDob', { date: gResult.gregorianBirthDateFormatted }) + "\\n";
+      text += t('myHijriAge', { age: formatAge(gResult.hijriAge) }) + "\\n";
       text += t('myHijriFullDob', { date: gResult.hijriBirthDateDetails.formattedDate });
     } else if (inputType === 'hijri' && result && 'hijriAge' in result && 'gregorianAge' in result) {
       const hResult = result as HijriCalculationResult;
-      text += t('myHijriAge', { age: formatAge(hResult.hijriAge) }) + "\n";
-      text += t('myHijriInputDob', { date: hResult.hijriInputDateDetails.formattedDate }) + "\n";
-      text += t('myGregorianAge', { age: formatAge(hResult.gregorianAge) }) + "\n";
+      text += t('myHijriAge', { age: formatAge(hResult.hijriAge) }) + "\\n";
+      text += t('myHijriInputDob', { date: hResult.hijriInputDateDetails.formattedDate }) + "\\n";
+      text += t('myGregorianAge', { age: formatAge(hResult.gregorianAge) }) + "\\n";
       text += t('myGregorianInputDob', { date: hResult.gregorianBirthDateFormatted });
     }
     if (liveAge) {
@@ -214,7 +214,7 @@ export default function AgeCalculator() {
           minutes: t('minutes', { count: liveAge.minutes }),
           seconds: t('seconds', { count: liveAge.seconds })
       });
-      text += "\n\n" + t('currentPreciseAge', { details: liveAgeDetails });
+      text += "\\n\\n" + t('currentPreciseAge', { details: liveAgeDetails });
     }
     const formatCountdown = (countdown: CountdownDetails) => t('countdownIs', {
         days: t('days', { count: countdown.days }),
@@ -224,15 +224,15 @@ export default function AgeCalculator() {
     });
     if (inputType === 'gregorian' && nextGregorianBirthdayCountdown) {
       if (nextGregorianBirthdayCountdown.isBirthdayToday) {
-         text += "\n\n" + t('itsMyGregorianBirthday');
+         text += "\\n\\n" + t('itsMyGregorianBirthday');
       } else {
-        text += "\n\n" + t('nextGregorianBirthdayCountdown', { countdown: formatCountdown(nextGregorianBirthdayCountdown) });
+        text += "\\n\\n" + t('nextGregorianBirthdayCountdown', { countdown: formatCountdown(nextGregorianBirthdayCountdown) });
       }
     } else if (inputType === 'hijri' && nextHijriBirthdayCountdown) {
        if (nextHijriBirthdayCountdown.isBirthdayToday) {
-         text += "\n\n" + t('itsMyHijriBirthday');
+         text += "\\n\\n" + t('itsMyHijriBirthday');
       } else {
-        text += "\n\n" + t('nextHijriBirthdayCountdown', { countdown: formatCountdown(nextHijriBirthdayCountdown) });
+        text += "\\n\\n" + t('nextHijriBirthdayCountdown', { countdown: formatCountdown(nextHijriBirthdayCountdown) });
       }
     }
     return text;
@@ -446,21 +446,21 @@ export default function AgeCalculator() {
 
   const handleShareResultFacebook = () => {
     if (typeof window !== 'undefined' && shareResultText) {
-      const fullQuote = `${shareResultText}\n\n${t('tryItYourself')}`;
+      const fullQuote = `${shareResultText}\\n\\n${t('tryItYourself')}`;
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(fullQuote)}`, '_blank', 'noopener,noreferrer');
     }
   };
   
   const handleShareResultTwitter = () => {
     if (typeof window !== 'undefined' && shareResultText) {
-      const fullText = `${shareResultText}\n\n${t('tryItYourself')}: ${shareUrl}`;
+      const fullText = `${shareResultText}\\n\\n${t('tryItYourself')}: ${shareUrl}`;
       window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(fullText)}`, '_blank', 'noopener,noreferrer');
     }
   };
   
   const handleShareResultWhatsApp = () => {
     if (typeof window !== 'undefined' && shareResultText) {
-      const fullText = `${shareResultText}\n\n${t('tryItYourself')}: ${shareUrl}`;
+      const fullText = `${shareResultText}\\n\\n${t('tryItYourself')}: ${shareUrl}`;
       window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(fullText)}`, '_blank', 'noopener,noreferrer');
     }
   };
