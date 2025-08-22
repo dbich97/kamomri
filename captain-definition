@@ -4,9 +4,17 @@
     "FROM node:18-alpine",
     "WORKDIR /app",
     "COPY . .",
+<<<<<<< HEAD
     "RUN npm install && npm run build",
     "RUN npm install -g serve",
     "EXPOSE 80",
     "CMD [\"serve\", \"-s\", \"build\", \"-l\", \"80\"]"
+=======
+    "RUN npm install",
+    "RUN npm run build",
+    "EXPOSE 3000",
+    "ENV PORT=3000",
+    "CMD [\"npm\", \"run\", \"start\"]"
+>>>>>>> 71a91cb36fb29631cdbce7c027ac8f28d89c07fc
   ]
 }
