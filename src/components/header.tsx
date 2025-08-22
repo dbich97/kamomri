@@ -2,7 +2,7 @@
 "use client";
 
 import React from 'react';
-import { Link, usePathname } from '@/navigation';
+import { Link, usePathname } from '@/app/navigation';
 import { useTranslations } from 'next-intl';
 import { Menu, Home as HomeIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';

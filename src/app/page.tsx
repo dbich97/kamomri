@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { locales }from '@/navigation';
+import { locales }from '@/app/navigation';
 
 // This is the root page, it redirects to the default locale.
 // The actual homepage is in src/app/[locale]/page.tsx

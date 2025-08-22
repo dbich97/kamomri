@@ -1,7 +1,7 @@
 
 'use client';
 
-import { usePathname, useRouter, locales } from '@/navigation';
+import { usePathname, useRouter, locales } from '@/app/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   Select,

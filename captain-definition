@@ -1,16 +1,12 @@
 {
   "schemaVersion": 2,
   "dockerfileLines": [
-                        "FROM node:8.7.0-alpine",
-                        "RUN mkdir -p /usr/src/app",
-                        "WORKDIR /usr/src/app",
-                        "COPY ./package.json /usr/src/app/",
-                        "RUN npm install && npm cache clean --force",
-                        "COPY ./ /usr/src/app",
-                        "ENV NODE_ENV production",
-                        "ENV PORT 80",
-                        "EXPOSE 80",
-                        "CMD [ \"npm\", \"build\" ]"
-                        "CMD [ \"npm\", \"start\" ]"
-                    ]
- }
+    "FROM node:18-alpine",
+    "WORKDIR /app",
+    "COPY . .",
+    "RUN npm install && npm run build",
+    "RUN npm install -g serve",
+    "EXPOSE 80",
+    "CMD [\"serve\", \"-s\", \"build\", \"-l\", \"80\"]"
+  ]
+}

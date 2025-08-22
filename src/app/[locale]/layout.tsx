@@ -1,7 +1,7 @@
 import {unstable_setRequestLocale} from 'next-intl/server';
 import { Toaster } from "@/components/ui/toaster";
 import Header from '@/components/header';
-import { locales } from '@/navigation';
+import { locales } from '@/app/navigation';
 import { notFound } from 'next/navigation';
 import {NextIntlClientProvider, useMessages} from 'next-intl';
 

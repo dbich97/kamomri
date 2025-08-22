@@ -1,6 +1,6 @@
 
 import { Metadata } from 'next';
-import { Link } from '@/navigation';
+import { Link } from '@/app/navigation';
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n';
 
