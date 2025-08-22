@@ -27,9 +27,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       sitemapEntries.push({
         url: url,
         lastModified: new Date(),
-        // alternates: {
-        //   languages: alternates,
-        // },
+        alternates: {
+  languages: alternates,
+},
       });
     });
   });
