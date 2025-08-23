@@ -1,27 +1,13 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const PUBLIC_FILE = /\.(.*)$/; // عشان ما يعمل redirect للملفات مثل .js, .css
-
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // تجاهل الملفات العامة و API
-  if (
-    pathname.startsWith('/api') ||
-    pathname.startsWith('/_next') ||
-    pathname.startsWith('/static') ||
-    PUBLIC_FILE.test(pathname)
-  ) {
-    return NextResponse.next();
-  }
-
-  // إذا الرابط بدون لغة (مثلاً /about أو /privacy)
-  const pathnameHasLocale = /^\/(en|fr|ar)(\/|$)/.test(pathname);
-
-  if (!pathnameHasLocale) {
+  // إذا زار المستخدم الرابط الرئيسي فقط "/"
+  if (pathname === '/') {
     const url = request.nextUrl.clone();
-    url.pathname = `/en${pathname}`; // غيّر "en" للغة الافتراضية عندك
+    url.pathname = '/fr'; // غيّرها إلى اللغة الافتراضية التي تريدها: /en أو /ar أو /fr
     return NextResponse.redirect(url);
   }
 
