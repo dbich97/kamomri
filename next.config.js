@@ -2,6 +2,10 @@ const withNextIntl = require('next-intl/plugin')();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  i18n: {
+    locales: ['en', 'fr', 'ar'], // كل اللغات اللي عندك
+    defaultLocale: 'en',          // اللغة الافتراضية
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
