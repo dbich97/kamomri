@@ -1,88 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+import { MetadataRoute } from 'next';
+import { locales, pathnames } from './navigation';
 
-  <url>
-    <loc>https://lazfan.com/en</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/ar</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/es</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/fr</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/de</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
+const siteUrl = 'https://lazfan.com';
 
-  <url>
-    <loc>https://lazfan.com/en/about</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/ar/about-us</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/es/sobre-nosotros</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/fr/a-propos</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/de/ueber-uns</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
+export default function sitemap(): MetadataRoute.Sitemap {
+  const pages: Array<keyof typeof pathnames> = ['/', '/about', '/contact', '/privacy'];
 
-  <url>
-    <loc>https://lazfan.com/en/contact</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/ar/contact</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/es/contact</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/fr/contact</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/de/contact</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
+  const sitemapEntries = pages.flatMap((page) =>
+    locales.map((locale) => {
+      const path = pathnames[page];
+      let pagePath: string;
 
-  <url>
-    <loc>https://lazfan.com/en/privacy</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/ar/privacy</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/es/privacy</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/fr/privacy</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://lazfan.com/de/privacy</loc>
-    <lastmod>2025-08-22T12:39:39+00:00</lastmod>
-  </url>
+      if (typeof path === 'string') {
+        pagePath = path;
+      } else {
+        pagePath = path[locale];
+      }
 
-</urlset>
+      if (pagePath === '/') pagePath = '';
+
+      return {
+        url: `${siteUrl}/${locale}${pagePath}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: page === '/' ? 1 : 0.8,
+      };
+    })
+  );
+
+  return sitemapEntries;
+}
